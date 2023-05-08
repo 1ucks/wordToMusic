@@ -1,7 +1,7 @@
 import org.jfugue.player.Player;
 import org.jfugue.pattern.Pattern;
 import java.util.ArrayList;
-public class Song {
+public abstract class Song {
 	private int time;//how long the user wants the piece to take
 	private int speed;//the speed or bpm of the piece
 	private int numOfMeasures;//the number of measures in the piece found by (time/bpm)/4
@@ -24,4 +24,11 @@ public class Song {
 		time = howLong;
 		numOfMeasures = (time/speed)/4;
 	}
+	public abstract String generateDrumline();
+	public abstract String generateDrumlineSwitchup();
+	public abstract String generateChorusMelody();
+	public abstract String generateVerse1Melody();
+	public abstract String generateVerse2Melody();
+	public abstract String generateBridgeMelody();
+	
 }
