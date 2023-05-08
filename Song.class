@@ -1,0 +1,17 @@
+import org.jfugue.player.Player;
+import org.jfugue.pattern.Pattern;
+public class Song {
+	private int time;//how long the user wants the piece to take
+	private int speed;//the speed or bpm of the piece
+	private int numOfMEasures;//the number of measures in the piece found by (time/bpm)/4
+	private Pattern intro; // it goes intro -> chorus -> verse 1 -> chorus -> verse 2 -> bridge -> chorus -> outro
+	private Pattern chorus;
+	private Pattern verse1;
+	private Pattern verse2;
+	private Pattern bridge;
+	private Pattern Outro;
+	public Song() {
+		
+	}
+	
+}
