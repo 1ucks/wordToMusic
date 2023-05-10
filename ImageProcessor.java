@@ -72,7 +72,96 @@ public class ImageProcessor {
         return this.imageUrl;
     }
     
-    
+    public String getDominantColor() throws IOException {
+    	//returns a string of the most common color in the image in all lower case
+    	
+    	//getting the image from the link
+    	BufferedImage im = ImageIO.read(this.imageUrl);
+    	
+    	
+    	//cycling through every pixel, skipping every other if its large
+    	int inc = 1;
+		int imArea = im.getHeight() * im.getWidth();
+    	if(im.getWidth() > 1000 || im.getHeight() > 1000) {
+    		inc = 2;
+    	}
+    	int numO = 0;
+    	int numY = 0;
+    	int numB = 0;
+    	int numG = 0;
+    	int numP = 0;
+    	int numR= 0;
+
+    	for(int i = 0; i < im.getHeight(); i+=inc) {
+    		
+    		for(int j = 0; j < im.getWidth(); j += inc) {
+    			//getting the rgb for the current pixel
+    			int pixelUno = im.getRGB(j, i);
+    			Color colorUno = new Color(pixelUno, true);
+    			
+    			int r = colorUno.getRed();
+    			int b = colorUno.getBlue();
+    			int g = colorUno.getGreen();
+    			
+    			//converting the rgb to hsb which lets us determine which color we are working with
+    			float[] HSB = new float[3];
+    			Color.RGBtoHSB(r, g, b, HSB);
+    			
+    			float hue = HSB[0]*360;
+    			//setting the color w/ its name
+    			if(hue < 15 || hue >= 345) {
+    				numR++;
+    			}
+    			else if(hue >= 15 && hue < 45) {
+    				numO++;
+    			}
+    			else if(hue >= 45 && hue < 75) {
+    				numY++;
+    			}
+    			else if(hue >= 75 && hue < 145) {
+    				numG++;
+    			}
+    			else if(hue >= 146 && hue < 250) {
+    				numB++;
+    			}
+    			else if(hue>= 250 && hue < 345) {
+    				numP++;
+    			}
+    			
+    		}
+    	}
+    	//determining the most common color
+    	int[] colors = {numR, numO, numY, numG, numB, numP};
+    	int max = colors[0];
+    	int count=0;
+    	int ind = 0;
+    	for(int i : colors) {
+    		if(i > max) {
+    			max = i;
+    			ind = count;
+    		}
+    		count++;
+    	}
+    	
+    	//returning
+    	switch(ind) {
+	    	case 0:
+	    		return "red";
+	    	case 1:
+	    		return "orange";
+	    	case 2:
+	    		return "yellow";
+	    	case 3:
+	    		return "green";
+	    	case 4:
+	    		return "blue";
+	    	case 5:
+	    		return "purple";
+	    	}
+    	System.out.println("fail");
+    	return "fail";
+    	
+    }
     
     public void printImage() throws IOException {
     	//method to print the image chosen in a new window
@@ -82,7 +171,7 @@ public class ImageProcessor {
 		
 		Image im2 = im.getScaledInstance(im.getWidth() / 2, im.getHeight() / 2, Image.SCALE_DEFAULT);
 		//opens the window with the image v
-		JFrame f = new JFrame("aNFT");
+		JFrame f = new JFrame("Image Display");
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//adds image to f
 		f.getContentPane().add(new JLabel(new ImageIcon(im2)));
@@ -92,4 +181,5 @@ public class ImageProcessor {
 		
 		
     }
+    
 }
