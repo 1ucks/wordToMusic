@@ -8,6 +8,15 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+import java.awt.*;
+import java.awt.image.BufferedImage;
+
+
 public class ImageProcessor {
     //Class to take a word and deal with all the implications an image brings, including fetching it via google custom search api
 
@@ -62,6 +71,25 @@ public class ImageProcessor {
         //returns imageUrl
         return this.imageUrl;
     }
-
-
+    
+    
+    
+    public void printImage() throws IOException {
+    	//method to print the image chosen in a new window
+    	
+    	//getting the image from the link
+		BufferedImage im = ImageIO.read(this.imageUrl);
+		
+		Image im2 = im.getScaledInstance(im.getWidth() / 2, im.getHeight() / 2, Image.SCALE_DEFAULT);
+		//opens the window with the image v
+		JFrame f = new JFrame("aNFT");
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//adds image to f
+		f.getContentPane().add(new JLabel(new ImageIcon(im2)));
+		f.pack();
+		f.setLocationRelativeTo(null);
+		f.setVisible(true);
+		
+		
+    }
 }
