@@ -98,7 +98,7 @@ public class RockSong extends Song {
 		return drumline;
 	}
 
-	public static Pattern generateDrumlineSwitchup() {
+	public Pattern generateDrumlineSwitchup() {
 		// the result pattern
 		Pattern drumline = new Pattern();
 		// the rhythm with the kit
