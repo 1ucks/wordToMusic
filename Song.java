@@ -1,10 +1,10 @@
 import org.jfugue.player.Player;
-import org.jfugue.pattern.Pattern;
+import org.jfugue.rhythm.Rhythm;
 import java.util.ArrayList;
+import org.jfugue.pattern.Pattern;
+
 public abstract class Song {
-	private int time;//how long the user wants the piece to take
-	private int speed;//the speed or bpm of the piece
-	private int numOfMeasures;//the number of measures in the piece found by (time/bpm)/4
+	private int speed;// the speed or bpm of the piece
 	private int feel;// the feel of the music
 	private Pattern intro; // it goes intro -> chorus -> verse 1 -> chorus -> verse 2 -> bridge -> chorus -> outro
 	private Pattern chorus;
@@ -13,22 +13,77 @@ public abstract class Song {
 	private Pattern bridge;
 	private Pattern Outro;
 	private ArrayList<String> chords;// the chords included in the word submitted
+
 	public Song(int howLong, int mostCommonColour, int averageColour, ArrayList<String> theChords) {
-		if(theChords != null) {
-			chords = theChords;
-		}else {
-			chords = null;
+		if (theChords != null) {
+			setChords(theChords);
+		} else {
+			setChords(null);
 		}
-		speed = averageColour;
-		feel = mostCommonColour;
-		time = howLong;
-		numOfMeasures = (time/speed)/4;
+		setSpeed(averageColour);
+		setFeel(mostCommonColour);
 	}
-	public abstract String generateDrumline();
-	public abstract String generateDrumlineSwitchup();
-	public abstract String generateChorusMelody();
-	public abstract String generateVerse1Melody();
-	public abstract String generateVerse2Melody();
-	public abstract String generateBridgeMelody();
+
+	// the drumlines
+	public abstract Pattern generateDrumline();
+
+	public abstract Pattern generateDrumlineSwitchup();
+
+	// the melodies
+	public abstract String generateIntroMelody(ArrayList<String> keys);
+
+	public abstract String generateChorusMelody(ArrayList<String> keys);
+
+	public abstract String generateVerse1Melody(ArrayList<String> keys);
+
+	public abstract String generateBridgeMelody(ArrayList<String> keys);
+
+	public abstract String generateOutroMelody(ArrayList<String> keys);
+
+	// the basslines
+	public abstract String generateIntroBassLine(ArrayList<String> keys);
+
+	public abstract String generateChorusBassLine(ArrayList<String> keys);
+
+	public abstract String generateVerse1BassLine(ArrayList<String> keys);
+
+	public abstract String generateBridgeBassLine(ArrayList<String> keys);
+
+	public abstract String generateOutroBassLine(ArrayList<String> keys);
+
+	// the background melodies
+	public abstract String generateIntroBackground(ArrayList<String> keys);
+
+	public abstract String generateChorusBackground(ArrayList<String> keys);
+
+	public abstract String generateVerse1Background(ArrayList<String> keys);
+
+	public abstract String generateBridgeBackground(ArrayList<String> keys);
+
+	public abstract String generateOutroBackground(ArrayList<String> keys);
 	
+	//getters and setters
+	public int getFeel() {
+		return feel;
+	}
+
+	public void setFeel(int feel) {
+		this.feel = feel;
+	}
+
+	public int getSpeed() {
+		return speed;
+	}
+
+	public void setSpeed(int speed) {
+		this.speed = speed;
+	}
+
+	public ArrayList<String> getChords() {
+		return chords;
+	}
+
+	public void setChords(ArrayList<String> chords) {
+		this.chords = chords;
+	}
 }
