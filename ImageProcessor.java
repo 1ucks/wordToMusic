@@ -26,6 +26,14 @@ public class ImageProcessor {
     public ImageProcessor(String word) throws MalformedURLException {
         //word chosen by the user
         this.word = word;
+        //if there is a space, change it to a + sign
+        for(int i = 0; i < word.length(); i ++) {
+        	if(word.charAt(i) == ' ') {
+        		System.out.println("f");
+        		this.word = word.substring(0, i) + "+" + word.substring(i+1);
+        	}
+        }
+        
         //url for the image selected by the api
         this.imageUrl = new URL("https://www.googleapis.com");
     }
