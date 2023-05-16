@@ -237,9 +237,14 @@ public class RockSong extends Song {
 						}
 						thePattern += pitches[key1] + "" + octave + noteNames[theRandom];
 						int nextNote = ((int)(Math.random()*7))*2 -7;
-						if(key1 + nextNote >= pitches.length) {
+						if(key1 + nextNote >= pitches.length) {								
 							octave +=1;
 							key1 = key1 + nextNote - pitches.length;
+						}else if(key1 + nextNote < 0) {						
+							octave -=1;
+							key1 = pitches.length + (key1 +nextNote);
+						}else {																
+							key1 +=nextNote;
 						}
 						//increment beatCount
 						beatCount += noteLengths[theRandom];
