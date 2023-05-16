@@ -10,16 +10,34 @@ public class HelloWorld {
 		public static void main(String[] args) {
 
 		Player player = new Player();
-		ArrayList<String> keys = null;
-String sound = generateIntroMelody(keys, 0);
+		ArrayList<String> keys = new ArrayList<String>();
+		keys.add("A");
+		keys.add("B");
+String sound = "V0 I[ROCK_ORGAN] A5s.F#4h.B5iAb5t B8w B5sF#4h.B4s.F#3sEb3t Ab6s.C#5s.C5h.G4s\n"
++"V1 I[TANGO_ACCORDIAN] A5s.F#4h.B5iAb5t B8w B5sF#4h.B4s.F#3sEb3t Ab6s.C#5s.C5h.G4s\n"
++"V2 I[BARITONE_SAX] A5s.F#4h.B5iAb5t B8w B5sF#4h.B4s.F#3sEb3t Ab6s.C#5s.C5h.G4s\n"
++"V3 I[SKAKUHACHI] A5s.F#4h.B5iAb5t B8w B5sF#4h.B4s.F#3sEb3t Ab6s.C#5s.C5h.G4s";
+player.play(sound);
 System.out.println(sound);
-		player.play(sound.repeat(4));
+System.out.println();
+Pattern p0 = new Pattern(sound.substring(0, sound.indexOf("V1"))); 						player.play(p0);	player.play("V0 I[ROCK_ORGAN] A5s.F#4h.B5iAb5t | B8w | B5sF#4h.B4s.F#3sEb3t | Ab6s.C#5s.C5h.G4s\n");				
+Pattern p1 = new Pattern(sound.substring(sound.indexOf("V1"), sound.indexOf("V2")));
+Pattern p2 = new Pattern(sound.substring(sound.indexOf("V2"), sound.indexOf("V3")));
+Pattern p3 = new Pattern(sound.substring(sound.indexOf("V3")));
+Pattern totalP = new Pattern();
+totalP.add(p0);																			System.out.println(p0);
+totalP.add(p1);																			System.out.println(p1);
+totalP.add(p2);																			System.out.println(p2);
+totalP.add(p3);																			System.out.println(p3);
+totalP.setTempo(60);																	System.out.println();
+player.play(totalP);																	System.out.println(totalP);
+
 		
 	}
 		// the array of melodic rock instruments
 		private static String[] melodicInstruments = new String[] { "OVERDRIVEN_GUITAR", "GUITAR_FRET_NOISE", "STEEL_STRING_GUITAR",
-				"DISTORTION_GUITAR", "HARMONICA", "ROCK_ORGAN", "TANGO_ACCORDIAN", "BARITONE_SAX", "SKAKUHACHI",
-				"BLOWN_BOTTLE", "DULCIMER", "GUNSHOT", "SHANAI" };
+				"DISTORTION_GUITAR", "OVERDRIVEN_GUITAR", "ROCK_ORGAN", "TANGO_ACCORDIAN", "BARITONE_SAX", "SKAKUHACHI",
+				"OVERDRIVEN_GUITAR", "OVERDRIVEN_GUITAR", "GUNSHOT", "SHANAI" };
 		//list of all pitches possible in assending order
 		private static String[] pitches = new String[] {"Ab", "A", "Bb", "B", "C", "C#", "D", "Eb", "E", "F", "F#", "G"};
 		// the lengths of each note
@@ -105,7 +123,9 @@ System.out.println(sound);
 							//increment beatCount
 							beatCount += noteLengths[theRandom];
 						}
-						thePattern += " ";
+						if(measureCount != 4) {
+						thePattern += " | ";
+						}
 					}
 				for(int count = 0; count < 4; count +=1) {
 					theMelody += "V" + count + " I[" + melodicInstruments[(int)(Math.random()*13)] + "] " +thePattern + "\n"; 
