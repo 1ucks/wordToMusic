@@ -1,0 +1,5 @@
+V0 I[ROCK_ORGAN] Eb6q.Eb6q.Eb6s.Ab7s.Ab7s Ab5iAb5q.Ab5i.Ab5sAb5i.Ab5s D5iD5q.D5qD5i.D5s D6qD6i.D6q.D6iD6s 
+V1 I[DISTORTION_GUITAR] Eb6q.Eb6q.Eb6s.Ab7s.Ab7s Ab5iAb5q.Ab5i.Ab5sAb5i.Ab5s D5iD5q.D5qD5i.D5s D6qD6i.D6q.D6iD6s 
+V2 I[HARMONICA] Eb6q.Eb6q.Eb6s.Ab7s.Ab7s Ab5iAb5q.Ab5i.Ab5sAb5i.Ab5s D5iD5q.D5qD5i.D5s D6qD6i.D6q.D6iD6s 
+V3 I[BARITONE_SAX] Eb6q.Eb6q.Eb6s.Ab7s.Ab7s Ab5iAb5q.Ab5i.Ab5sAb5i.Ab5s D5iD5q.D5qD5i.D5s D6qD6i.D6q.D6iD6s 
+
