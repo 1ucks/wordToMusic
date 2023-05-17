@@ -29,8 +29,8 @@ public class ImageProcessor {
         //if there is a space, change it to a + sign
         for(int i = 0; i < word.length(); i ++) {
         	if(word.charAt(i) == ' ') {
-        		System.out.println("f");
-        		this.word = word.substring(0, i) + "+" + word.substring(i+1);
+        		this.word = this.word.substring(0, i) + "+" + this.word.substring(i+1);
+
         	}
         }
         
