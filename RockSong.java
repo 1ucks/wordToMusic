@@ -265,7 +265,56 @@ public class RockSong extends Song {
 			
 			break;
 		case(4):
-			
+			//sad
+			for(int measureCount = 1; measureCount<=4; measureCount +=1) {
+				if (measureCount ==3) {
+					key1 = key2;
+				}
+				double beatCount = 0; 
+				int octave = (int)(Math.random()*4 + 3); 										
+				while(beatCount<4) { 															
+					// picks a random beat that fits in the measure
+					int theRandom = (int) (Math.random() * noteLengths.length);
+					// if it does not fit it adds it skips and tries again
+					if (beatCount + noteLengths[theRandom] > 4) {
+						continue;
+					}
+					thePattern += pitches[key1] + "" + octave + noteNames[theRandom];
+					int nextNote = ((int)(Math.random()*5));
+					switch(nextNote) {
+					case (0):
+						nextNote = -14;
+						break;
+					case (1):
+						nextNote = -6;
+						break;
+					case (2):
+						nextNote = 0;
+						break;
+					case (3):
+						nextNote = 6;
+						break;
+					case (4):
+						nextNote = 14;
+						break;
+					}
+					if(key1 + nextNote >= pitches.length) {								
+						octave +=1;
+						key1 = key1 + nextNote - pitches.length;
+					}else if(key1 + nextNote < 0) {						
+						octave -=1;
+						key1 = pitches.length + (key1 +nextNote);
+					}else {																
+						key1 +=nextNote;
+					}
+					//increment beatCount
+					beatCount += noteLengths[theRandom];
+				}
+				thePattern += " ";
+			}
+		for(int count = 0; count < 4; count +=1) {
+			theMelody += "V" + count + " I[" + melodicInstruments[(int)(Math.random()*13)] + "] " +thePattern + "\n"; 
+		}
 			break;
 		case(5):
 			
