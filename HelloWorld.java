@@ -13,14 +13,11 @@ public class HelloWorld {
 		ArrayList<String> keys = new ArrayList<String>();
 		keys.add("A");
 		keys.add("B");
-String sound = "V0 I[ROCK_ORGAN] A5s.F#4h.B5iAb5t B8w B5sF#4h.B4s.F#3sEb3t Ab6s.C#5s.C5h.G4s\n"
-+"V1 I[TANGO_ACCORDIAN] A5s.F#4h.B5iAb5t B8w B5sF#4h.B4s.F#3sEb3t Ab6s.C#5s.C5h.G4s\n"
-+"V2 I[BARITONE_SAX] A5s.F#4h.B5iAb5t B8w B5sF#4h.B4s.F#3sEb3t Ab6s.C#5s.C5h.G4s\n"
-+"V3 I[SKAKUHACHI] A5s.F#4h.B5iAb5t B8w B5sF#4h.B4s.F#3sEb3t Ab6s.C#5s.C5h.G4s";
+String sound = generateIntroMelody(keys, 0);
 player.play(sound);
 System.out.println(sound);
 System.out.println();
-Pattern p0 = new Pattern(sound.substring(0, sound.indexOf("V1"))); 						player.play(p0);	player.play("V0 I[ROCK_ORGAN] A5s.F#4h.B5iAb5t | B8w | B5sF#4h.B4s.F#3sEb3t | Ab6s.C#5s.C5h.G4s\n");				
+Pattern p0 = new Pattern(sound.substring(0, sound.indexOf("V1"))); 						player.play(p0);				
 Pattern p1 = new Pattern(sound.substring(sound.indexOf("V1"), sound.indexOf("V2")));
 Pattern p2 = new Pattern(sound.substring(sound.indexOf("V2"), sound.indexOf("V3")));
 Pattern p3 = new Pattern(sound.substring(sound.indexOf("V3")));
