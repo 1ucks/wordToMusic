@@ -17,24 +17,29 @@ while (true) {
 		ArrayList<String> keys = new ArrayList<String>();
 		keys.add("A");
 		keys.add("B");
-String sound = generateIntroMelody(keys, 4);
-player.play(sound);
+String sound = generateIntroMelody(keys, (int)(Math.random()*6));
+//player.play(sound);
 System.out.println(sound);
 System.out.println();
 Pattern p0 = new Pattern(sound.substring(0, sound.indexOf("V1"))); 						//player.play(p0);				
 Pattern p1 = new Pattern(sound.substring(sound.indexOf("V1"), sound.indexOf("V2")));
 Pattern p2 = new Pattern(sound.substring(sound.indexOf("V2"), sound.indexOf("V3")));
 Pattern p3 = new Pattern(sound.substring(sound.indexOf("V3")));
-//Pattern p4 = new Pattern(generateDrumlineSwitchup().repeat(2));
+Pattern p4 = new Pattern(generateDrumlineSwitchup().repeat(2));
 Pattern totalP = new Pattern();
 totalP.add(p0);																			System.out.println(p0);
 totalP.add(p1);																			System.out.println(p1);
 totalP.add(p2);																			System.out.println(p2);
-totalP.add(p3);																			System.out.println(p3);
+totalP.add(p3);	
+totalP.add(p4);
+System.out.println(p3);
 System.out.println();
-player.play(totalP);																	System.out.println(totalP);
+
+player.play(totalP);
+System.out.println(totalP);
+
 }catch(Exception e) {
-		
+	System.out.println("failed");
 	}
 		
 	}
@@ -187,7 +192,12 @@ player.play(totalP);																	System.out.println(totalP);
 							if (beatCount + noteLengths[theRandom] > 4) {
 								continue;
 							}
-							thePattern += pitches[key1] + "" + octave + noteNames[theRandom];
+							int random2 = (int)(Math.random()* 9);
+							if(random2 != 0) {
+								thePattern += pitches[key1] + "" + octave + noteNames[theRandom] + " ";
+							}else {
+								thePattern += "R" + octave + noteNames[theRandom] + " ";
+							}
 							int nextNote = ((int)(Math.random()*7))*2 -7;
 							if(key1 + nextNote >= pitches.length) {								
 								octave +=1;
@@ -208,22 +218,18 @@ player.play(totalP);																	System.out.println(totalP);
 				}
 				break;
 			case(1):
-				
-				break;
-			case(2):
-				
-				break;
-			case(3):
-				
-				break;
-			case(4):
-				//sad
+				//orange happy and slightly angry and slightly royal sounding idk
+				//keeps track of the measure
 				for(int measureCount = 1; measureCount<=4; measureCount +=1) {
+					//on measure 3 it switches the key
 					if (measureCount ==3) {
 						key1 = key2;
 					}
-					double beatCount = 0; 
-					int octave = (int)(Math.random()*4 + 3); 										
+					//keeps track of what beat its on
+					double beatCount = 0;
+					//dictates the octave
+					int octave = (int)(Math.random()*3 + 5); 
+					//while a measure is not complete
 					while(beatCount<4) { 															
 						// picks a random beat that fits in the measure
 						int theRandom = (int) (Math.random() * noteLengths.length);
@@ -231,9 +237,221 @@ player.play(totalP);																	System.out.println(totalP);
 						if (beatCount + noteLengths[theRandom] > 4) {
 							continue;
 						}
-						thePattern += pitches[key1] + "" + octave + noteNames[theRandom];
+						//it adds to the pattern the note name, the octave, and time length
+						int random2 = (int)(Math.random()* 9);
+						if(random2 != 0) {
+							thePattern += pitches[key1] + "" + octave + noteNames[theRandom] + " ";
+						}else {
+							thePattern += "R" + octave + noteNames[theRandom] + " ";
+						}
+						//this will dictate the next note via a random number that correlates to a themeatically sensible next note
 						int nextNote = ((int)(Math.random()*5));
 						switch(nextNote) {
+						//the possible next notes
+						case (0):
+							nextNote = -8;
+							break;
+						case (1):
+							nextNote = -6;
+							break;
+						case (2):
+							nextNote = 0;
+							break;
+						case (3):
+							nextNote = 6;
+							break;
+						case (4):
+							nextNote = 8;
+							break;
+						}
+						//if the next note is more or less than possible it changes the octave
+						if(key1 + nextNote >= pitches.length) {								
+							octave +=1;
+							key1 = key1 + nextNote - pitches.length;
+						}else if(key1 + nextNote < 0) {						
+							octave -=1;
+							key1 = pitches.length + (key1 +nextNote);
+						}else {																
+							key1 +=nextNote;
+						}
+						//increment beatCount
+						beatCount += noteLengths[theRandom];
+					}
+					//it gets added to the pattern
+					thePattern += " ";
+				}
+			//it does it 4 times with different instruments
+			for(int count = 0; count < 4; count +=1) {
+				theMelody += "V" + count + " I[" + melodicInstruments[(int)(Math.random()*13)] + "] " +thePattern + "\n"; 
+			}
+				break;
+			case(2):
+				//yellow
+				//keeps track of the measure
+				for(int measureCount = 1; measureCount<=4; measureCount +=1) {
+					//on measure 3 it switches the key
+					if (measureCount ==3) {
+						key1 = key2;
+					}
+					//keeps track of what beat its on
+					double beatCount = 0;
+					//dictates the octave
+					int octave = (int)(Math.random()*2 + 5); 
+					//while a measure is not complete
+					while(beatCount<4) { 															
+						// picks a random beat that fits in the measure
+						int theRandom = (int) (Math.random() * noteLengths.length);
+						// if it does not fit it adds it skips and tries again
+						if (beatCount + noteLengths[theRandom] > 4) {
+							continue;
+						}
+						//it adds to the pattern the note name, the octave, and time length
+						int random2 = (int)(Math.random()* 9);
+						if(random2 != 0) {
+							thePattern += pitches[key1] + "" + octave + noteNames[theRandom] + " ";
+						}else {
+							thePattern += "R" + octave + noteNames[theRandom] + " ";
+						}
+						//this will dictate the next note via a random number that correlates to a themeatically sensible next note
+						int nextNote = ((int)(Math.random()*5));
+						switch(nextNote) {
+						//the possible next notes
+						case (0):
+							nextNote = -3;
+							break;
+						case (1):
+							nextNote = -6;
+							break;
+						case (2):
+							nextNote = 0;
+							break;
+						case (3):
+							nextNote = 6;
+							break;
+						case (4):
+							nextNote = 3;
+							break;
+						}
+						//if the next note is more or less than possible it changes the octave
+						if(key1 + nextNote >= pitches.length) {								
+							octave +=1;
+							key1 = key1 + nextNote - pitches.length;
+						}else if(key1 + nextNote < 0) {						
+							octave -=1;
+							key1 = pitches.length + (key1 +nextNote);
+						}else {																
+							key1 +=nextNote;
+						}
+						//increment beatCount
+						beatCount += noteLengths[theRandom];
+					}
+					//it gets added to the pattern
+					thePattern += " ";
+				}
+			//it does it 4 times with different instruments
+			for(int count = 0; count < 4; count +=1) {
+				theMelody += "V" + count + " I[" + melodicInstruments[(int)(Math.random()*13)] + "] " +thePattern + "\n"; 
+			}
+				break;
+			case(3):
+				//green
+				//keeps track of the measure
+				for(int measureCount = 1; measureCount<=4; measureCount +=1) {
+					//on measure 3 it switches the key
+					if (measureCount ==3) {
+						key1 = key2;
+					}
+					//keeps track of what beat its on
+					double beatCount = 0;
+					//dictates the octave
+					int octave = (int)(Math.random()*3 + 5); 
+					//while a measure is not complete
+					while(beatCount<4) { 															
+						// picks a random beat that fits in the measure
+						int theRandom = (int) (Math.random() * noteLengths.length);
+						// if it does not fit it adds it skips and tries again
+						if (beatCount + noteLengths[theRandom] > 4) {
+							continue;
+						}
+						//it adds to the pattern the note name, the octave, and time length
+						int random2 = (int)(Math.random()* 9);
+						if(random2 != 0) {
+							thePattern += pitches[key1] + "" + octave + noteNames[theRandom] + " ";
+						}else {
+							thePattern += "R" + octave + noteNames[theRandom] + " ";
+						}
+						//this will dictate the next note via a random number that correlates to a themeatically sensible next note
+						int nextNote = ((int)(Math.random()*5));
+						switch(nextNote) {
+						//the possible next notes
+						case (0):
+							nextNote = -3;
+							break;
+						case (1):
+							nextNote = -1;
+							break;
+						case (2):
+							nextNote = 0;
+							break;
+						case (3):
+							nextNote = 1;
+							break;
+						case (4):
+							nextNote = 3;
+							break;
+						}
+						//if the next note is more or less than possible it changes the octave
+						if(key1 + nextNote >= pitches.length) {								
+							octave +=1;
+							key1 = key1 + nextNote - pitches.length;
+						}else if(key1 + nextNote < 0) {						
+							octave -=1;
+							key1 = pitches.length + (key1 +nextNote);
+						}else {																
+							key1 +=nextNote;
+						}
+						//increment beatCount
+						beatCount += noteLengths[theRandom];
+					}
+					//it gets added to the pattern
+					thePattern += " ";
+				}
+			//it does it 4 times with different instruments
+			for(int count = 0; count < 4; count +=1) {
+				theMelody += "V" + count + " I[" + melodicInstruments[(int)(Math.random()*13)] + "] " +thePattern + "\n"; 
+			}
+				break;
+			case(4):
+				//sad
+				//keeps track of the measure
+				for(int measureCount = 1; measureCount<=4; measureCount +=1) {
+					//on measure 3 it switches the key
+					if (measureCount ==3) {
+						key1 = key2;
+					}
+					//keeps track of what beat its on
+					double beatCount = 0;
+					//dictates the octave
+					int octave = (int)(Math.random()*4 + 3); 
+					//while a measure is not complete
+					while(beatCount<4) { 															
+						// picks a random beat that fits in the measure
+						int theRandom = (int) (Math.random() * noteLengths.length);
+						// if it does not fit it adds it skips and tries again
+						if (beatCount + noteLengths[theRandom] > 4) {
+							continue;
+						}
+						//it adds to the pattern the note name, the octave, and time length
+						int random2 = (int)(Math.random()* 9);
+						if(random2 != 0) {
+							thePattern += pitches[key1] + "" + octave + noteNames[theRandom] + " ";
+						}else {
+							thePattern += "R" + octave + noteNames[theRandom] + " ";
+						}
+						//this will dictate the next note via a random number that correlates to a themeatically sensible next note
+						int nextNote = ((int)(Math.random()*5));
+						switch(nextNote) {
+						//the possible next notes
 						case (0):
 							nextNote = -14;
 							break;
@@ -250,6 +468,7 @@ player.play(totalP);																	System.out.println(totalP);
 							nextNote = 14;
 							break;
 						}
+						//if the next note is more or less than possible it changes the octave
 						if(key1 + nextNote >= pitches.length) {								
 							octave +=1;
 							key1 = key1 + nextNote - pitches.length;
@@ -262,19 +481,86 @@ player.play(totalP);																	System.out.println(totalP);
 						//increment beatCount
 						beatCount += noteLengths[theRandom];
 					}
+					//it gets added to the pattern
 					thePattern += " ";
 				}
+			//it does it 4 times with different instruments
 			for(int count = 0; count < 4; count +=1) {
 				theMelody += "V" + count + " I[" + melodicInstruments[(int)(Math.random()*13)] + "] " +thePattern + "\n"; 
 			}
 				break;
 			case(5):
-				
+				//purple
+				//keeps track of the measure
+				for(int measureCount = 1; measureCount<=4; measureCount +=1) {
+					//on measure 3 it switches the key
+					if (measureCount ==3) {
+						key1 = key2;
+					}
+					//keeps track of what beat its on
+					double beatCount = 0;
+					//dictates the octave
+					int octave = (int)(Math.random()*3 + 2); 
+					//while a measure is not complete
+					while(beatCount<4) { 															
+						// picks a random beat that fits in the measure
+						int theRandom = (int) (Math.random() * noteLengths.length);
+						// if it does not fit it adds it skips and tries again
+						if (beatCount + noteLengths[theRandom] > 4) {
+							continue;
+						}
+						//it adds to the pattern the note name, the octave, and time length
+						int random2 = (int)(Math.random()* 9);
+						if(random2 != 0) {
+							thePattern += pitches[key1] + "" + octave + noteNames[theRandom] + " ";
+						}else {
+							thePattern += "R" + octave + noteNames[theRandom] + " ";
+						}
+						//this will dictate the next note via a random number that correlates to a themeatically sensible next note
+						int nextNote = ((int)(Math.random()*5));
+						switch(nextNote) {
+						//the possible next notes
+						case (0):
+							nextNote = -4;
+							break;
+						case (1):
+							nextNote = -8;
+							break;
+						case (2):
+							nextNote = 0;
+							break;
+						case (3):
+							nextNote = 8;
+							break;
+						case (4):
+							nextNote = 4;
+							break;
+						}
+						//if the next note is more or less than possible it changes the octave
+						if(key1 + nextNote >= pitches.length) {								
+							octave +=1;
+							key1 = key1 + nextNote - pitches.length;
+						}else if(key1 + nextNote < 0) {						
+							octave -=1;
+							key1 = pitches.length + (key1 +nextNote);
+						}else {																
+							key1 +=nextNote;
+						}
+						//increment beatCount
+						beatCount += noteLengths[theRandom];
+					}
+					//it gets added to the pattern
+					thePattern += " ";
+				}
+			//it does it 4 times with different instruments
+			for(int count = 0; count < 4; count +=1) {
+				theMelody += "V" + count + " I[" + melodicInstruments[(int)(Math.random()*13)] + "] " +thePattern + "\n"; 
+			}
 				break;
 			default:
 				theMelody = "";
 			}
 			return theMelody;
-		}
+		}	
 	}
 			
