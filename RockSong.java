@@ -5,8 +5,8 @@ import org.jfugue.pattern.Pattern;
 
 public class RockSong extends Song {
 	// constructor
-	public RockSong( int mostCommonColour, int averageColour, ArrayList<String> theChords) {
-		super(mostCommonColour, averageColour, theChords);
+	public RockSong( int leastCommonColor, int averageColour, ArrayList<String> theChords) {
+		super(leastCommonColor, averageColour, theChords);
 	}
 
 	// the array of melodic rock instruments

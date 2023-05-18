@@ -14,7 +14,7 @@ public abstract class Song {
 	private Pattern Outro;
 	private ArrayList<String> chords;// the chords included in the word submitted
 
-	public Song(int howLong, int mostCommonColour, int averageColour, ArrayList<String> theChords) {
+	public Song(int leastCommonColor, int averageColour, ArrayList<String> theChords) {
 		if (theChords != null) {
 			setChords(theChords);
 		} else {

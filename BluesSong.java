@@ -6,8 +6,8 @@ import org.jfugue.pattern.Pattern;
 
 public class BluesSong extends Song{
 	private ArrayList<String> Drumline = new ArrayList<String>(Arrays.asList("A5", "C5", "E5", "G5"));
-	public BluesSong(int howLong, int mostCommonColour, int averageColour, ArrayList<String> theChords) {
-		super(howLong,  mostCommonColour,  averageColour, theChords);
+	public BluesSong(int leastCommonColor, int averageColour, ArrayList<String> theChords) {
+		super(leastCommonColor,  averageColour, theChords);
 	}
 	//the drumlines
 	public  Pattern generateDrumline() {
