@@ -235,7 +235,12 @@ public class RockSong extends Song {
 						if (beatCount + noteLengths[theRandom] > 4) {
 							continue;
 						}
-						thePattern += pitches[key1] + "" + octave + noteNames[theRandom];
+						int random2 = (int)(Math.random()* 9);
+						if(random2 != 0) {
+							thePattern += pitches[key1] + "" + octave + noteNames[theRandom] + " ";
+						}else {
+							thePattern += "R" + octave + noteNames[theRandom] + " ";
+						}
 						int nextNote = ((int)(Math.random()*7))*2 -7;
 						if(key1 + nextNote >= pitches.length) {								
 							octave +=1;
@@ -276,7 +281,12 @@ public class RockSong extends Song {
 						continue;
 					}
 					//it adds to the pattern the note name, the octave, and time length
-					thePattern += pitches[key1] + "" + octave + noteNames[theRandom];
+					int random2 = (int)(Math.random()* 9);
+					if(random2 != 0) {
+						thePattern += pitches[key1] + "" + octave + noteNames[theRandom] + " ";
+					}else {
+						thePattern += "R" + octave + noteNames[theRandom] + " ";
+					}
 					//this will dictate the next note via a random number that correlates to a themeatically sensible next note
 					int nextNote = ((int)(Math.random()*5));
 					switch(nextNote) {
@@ -339,7 +349,12 @@ public class RockSong extends Song {
 						continue;
 					}
 					//it adds to the pattern the note name, the octave, and time length
-					thePattern += pitches[key1] + "" + octave + noteNames[theRandom];
+					int random2 = (int)(Math.random()* 9);
+					if(random2 != 0) {
+						thePattern += pitches[key1] + "" + octave + noteNames[theRandom] + " ";
+					}else {
+						thePattern += "R" + octave + noteNames[theRandom] + " ";
+					}
 					//this will dictate the next note via a random number that correlates to a themeatically sensible next note
 					int nextNote = ((int)(Math.random()*5));
 					switch(nextNote) {
@@ -402,7 +417,12 @@ public class RockSong extends Song {
 						continue;
 					}
 					//it adds to the pattern the note name, the octave, and time length
-					thePattern += pitches[key1] + "" + octave + noteNames[theRandom];
+					int random2 = (int)(Math.random()* 9);
+					if(random2 != 0) {
+						thePattern += pitches[key1] + "" + octave + noteNames[theRandom] + " ";
+					}else {
+						thePattern += "R" + octave + noteNames[theRandom] + " ";
+					}
 					//this will dictate the next note via a random number that correlates to a themeatically sensible next note
 					int nextNote = ((int)(Math.random()*5));
 					switch(nextNote) {
@@ -465,7 +485,12 @@ public class RockSong extends Song {
 						continue;
 					}
 					//it adds to the pattern the note name, the octave, and time length
-					thePattern += pitches[key1] + "" + octave + noteNames[theRandom];
+					int random2 = (int)(Math.random()* 9);
+					if(random2 != 0) {
+						thePattern += pitches[key1] + "" + octave + noteNames[theRandom] + " ";
+					}else {
+						thePattern += "R" + octave + noteNames[theRandom] + " ";
+					}
 					//this will dictate the next note via a random number that correlates to a themeatically sensible next note
 					int nextNote = ((int)(Math.random()*5));
 					switch(nextNote) {
@@ -528,7 +553,12 @@ public class RockSong extends Song {
 						continue;
 					}
 					//it adds to the pattern the note name, the octave, and time length
-					thePattern += pitches[key1] + "" + octave + noteNames[theRandom];
+					int random2 = (int)(Math.random()* 9);
+					if(random2 != 0) {
+						thePattern += pitches[key1] + "" + octave + noteNames[theRandom] + " ";
+					}else {
+						thePattern += "R" + octave + noteNames[theRandom] + " ";
+					}
 					//this will dictate the next note via a random number that correlates to a themeatically sensible next note
 					int nextNote = ((int)(Math.random()*5));
 					switch(nextNote) {
@@ -573,7 +603,7 @@ public class RockSong extends Song {
 		default:
 			theMelody = "";
 		}
-		return theMelody
+		return theMelody;
 	}
 	public String generateChorusMelody(ArrayList<String> keys) {
 
