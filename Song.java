@@ -62,6 +62,12 @@ public abstract class Song {
 
 	public abstract String generateOutroBackground(ArrayList<String> keys);
 	
+	//main method to play the song
+
+	public abstract void playSong(ArrayList<String> keys);
+
+
+
 	//getters and setters
 	public int getFeel() {
 		return feel;
