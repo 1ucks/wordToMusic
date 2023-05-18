@@ -15,8 +15,8 @@ while (true) {
 																					System.out.println("trying");
 		Player player = new Player();
 		ArrayList<String> keys = new ArrayList<String>();
-		keys.add("A");
-		keys.add("B");
+		keys.add("C#");
+		keys.add("D");
 String sound = generateIntroMelody(keys, (int)(Math.random()*6));
 //player.play(sound);
 System.out.println(sound);
@@ -26,18 +26,13 @@ Pattern p1 = new Pattern(sound.substring(sound.indexOf("V1"), sound.indexOf("V2"
 Pattern p2 = new Pattern(sound.substring(sound.indexOf("V2"), sound.indexOf("V3")));
 Pattern p3 = new Pattern(sound.substring(sound.indexOf("V3")));
 Pattern p4 = new Pattern(generateDrumlineSwitchup().repeat(2));
-Pattern totalP = new Pattern();
-totalP.add(p0);																			System.out.println(p0);
-totalP.add(p1);																			System.out.println(p1);
-totalP.add(p2);																			System.out.println(p2);
-totalP.add(p3);	
-totalP.add(p4);
-System.out.println(p3);
-System.out.println();
-
-player.play(totalP);
-System.out.println(totalP);
-
+String bass = generateIntroBassLine(keys, (int)(Math.random()*6));
+System.out.println(bass);
+Pattern pb0 = new Pattern(bass.substring(0, sound.indexOf("V1"))); 						//player.play(p0);				
+Pattern pb1 = new Pattern(bass.substring(sound.indexOf("V1"), sound.indexOf("V2")));
+Pattern pb2 = new Pattern(bass.substring(sound.indexOf("V2"), sound.indexOf("V3")));
+Pattern pb3 = new Pattern(bass.substring(sound.indexOf("V3")));
+player.play(pb0,pb1,pb2,pb3,p0,p1,p2,p3,p4);
 }catch(Exception e) {
 	System.out.println("failed");
 	}
@@ -59,6 +54,9 @@ System.out.println(totalP);
 		// the drumkit for the switchup with twice the instruments
 		private static String[] rhythmParts2 = new String[] { "O", "S", "*", "X", "^", "o", "s", "`", "+", "x", "O", "S",
 				"*", "X", "^" };
+		private static String[] bassInstruments = new String[] { "ELECTRIC_BASS_FINGER", "ELECTRIC_BASS_PICK", "VOICE_OOHS",
+				"REED_ORGAN", "TUBA", "SLAP_BASS_1", "SLAP_BASS_2", "FRETLESS_BASS", "BARITONE_SAX", "BANJO",
+				"HELICOPTER", "BASSOON" };
 		// the special drumline instruments that sound cool
 		private static ArrayList<String> drumlineArr = new ArrayList<String>(
 				Arrays.asList("R", "A5", "C5", "D5", "F5", "G5"));
@@ -211,7 +209,7 @@ System.out.println(totalP);
 							//increment beatCount
 							beatCount += noteLengths[theRandom];
 						}
-						thePattern += " ";
+						thePattern += " | ";
 					}
 				for(int count = 0; count < 4; count +=1) {
 					theMelody += "V" + count + " I[" + melodicInstruments[(int)(Math.random()*13)] + "] " +thePattern + "\n"; 
@@ -278,7 +276,7 @@ System.out.println(totalP);
 						beatCount += noteLengths[theRandom];
 					}
 					//it gets added to the pattern
-					thePattern += " ";
+					thePattern += " | ";
 				}
 			//it does it 4 times with different instruments
 			for(int count = 0; count < 4; count +=1) {
@@ -346,7 +344,7 @@ System.out.println(totalP);
 						beatCount += noteLengths[theRandom];
 					}
 					//it gets added to the pattern
-					thePattern += " ";
+					thePattern += " | ";
 				}
 			//it does it 4 times with different instruments
 			for(int count = 0; count < 4; count +=1) {
@@ -414,7 +412,7 @@ System.out.println(totalP);
 						beatCount += noteLengths[theRandom];
 					}
 					//it gets added to the pattern
-					thePattern += " ";
+					thePattern += " | ";
 				}
 			//it does it 4 times with different instruments
 			for(int count = 0; count < 4; count +=1) {
@@ -482,7 +480,7 @@ System.out.println(totalP);
 						beatCount += noteLengths[theRandom];
 					}
 					//it gets added to the pattern
-					thePattern += " ";
+					thePattern += " | ";
 				}
 			//it does it 4 times with different instruments
 			for(int count = 0; count < 4; count +=1) {
@@ -561,6 +559,165 @@ System.out.println(totalP);
 				theMelody = "";
 			}
 			return theMelody;
-		}	
+		}
+		public static String generateIntroBassLine(ArrayList<String> keys, int feel) {
+			int key1;
+			int key2;
+			if(keys == null) {
+				key1 = (int)(Math.random()*11);
+				key2 = (int)(Math.random()*11);
+			}else {
+				if(keys.size() == 1) {
+					int index;
+					for(index =0; index<pitches.length; index +=1) {
+						if(pitches[index] == keys.get(0)) {
+							break;
+						}
+					}
+					key1 = index;
+					key2 = (int)(Math.random()*11); 
+				}else {
+					int index;
+					for(index =0; index<pitches.length; index +=1) {
+						if(pitches[index] == keys.get(0)) {
+							break;
+						}
+					}
+					key1 = index;
+					keys.add(pitches[key1]);
+					keys.remove(0);
+					for(index =0; index<pitches.length; index +=1) {
+						if(pitches[index] == keys.get(0)) {
+							break;
+						}
+					}
+					key2 = index;
+					keys.add(pitches[key2]);
+					keys.remove(0);
+				}
+			}
+			String theChord = "";
+			int random = (int)(Math.random()*3);
+			switch(feel) {
+			case(0):
+				switch(random) {
+				case(0):
+					theChord = "sus2";
+					break;
+				case(1):
+					theChord = "dom7<5>9";
+					break;
+				case(2):
+					theChord = "add9";
+					break;
+				}
+				break;
+			case(1):
+				switch(random) {
+				case(0):
+					theChord = "maj9";
+					break;
+				case(1):
+					theChord = "dim7";
+					break;
+				case(2):
+					theChord = "maj13";
+					break;
+				}
+				break;
+			case(2):
+				switch(random) {
+				case(0):
+					theChord = "maj";
+					break;
+				case(1):
+					theChord = "maj7";
+					break;
+				case(2):
+					theChord = "add9";
+					break;
+				}
+				break;
+			case(3):
+				switch(random) {
+				case(0):
+					theChord = "dom13";
+					break;
+				case(1):
+					theChord = "sus4";
+					break;
+				case(2):
+					theChord = "aug";
+					break;
+				}
+				break;
+			case(4):
+				switch(random) {
+				case(0):
+					theChord = "min";
+					break;
+				case(1):
+					theChord = "min7";
+					break;
+				case(2):
+					theChord = "min11";
+					break;
+				}
+				break;
+			case(5):
+				switch(random) {
+				case(0):
+					theChord = "minmaj7";
+					break;
+				case(1):
+					theChord = "maj7>5";
+					break;
+				case(2):
+					theChord = "dom11";
+					break;
+				}
+				break;
+			}
+			String thePattern = "";
+			for(int measureCount = 1; measureCount<=4; measureCount +=1) {
+				if (measureCount ==3) {
+					key1 = key2;
+				}
+				double beatCount = 0; 
+				int octave = (int)(Math.random()*3 +2); 										
+				while(beatCount<4) { 															
+					// picks a random beat that fits in the measure
+					int theRandom = (int) (Math.random() * noteLengths.length);
+					// if it does not fit it adds it skips and tries again
+					if (beatCount + noteLengths[theRandom] > 4) {
+						continue;
+					}
+					int random2 = (int)(Math.random()* 9);
+					if(random2 != 0) {
+						thePattern += pitches[key1] + "" + octave+ theChord  + noteNames[theRandom] + " ";
+					}else {
+						thePattern += "R" + octave + noteNames[theRandom] + " ";
+					}
+					int nextNote = ((int)(Math.random()*7))*2 -7;
+					if(key1 + nextNote >= pitches.length) {								
+						octave +=1;
+						key1 = key1 + nextNote - pitches.length;
+					}else if(key1 + nextNote < 0) {						
+						octave -=1;
+						key1 = pitches.length + (key1 +nextNote);
+					}else {																
+						key1 +=nextNote;
+					}
+					//increment beatCount
+					beatCount += noteLengths[theRandom];
+				}
+				thePattern += "  | ";
+			}
+			String theMelody = "";
+
+			theMelody += "V" + (int)(4) + " I[" + bassInstruments[(int)(Math.random()*13)] + "] " +thePattern + "\n"; 
+		
+		return theMelody;
+		}
 	}
 			
