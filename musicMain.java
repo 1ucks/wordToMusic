@@ -39,6 +39,7 @@ public class musicMain {
 		ip.printImage();
 		
 		//chords
+		//KIERAN WHAT IS A CHORD HELP PLEASE PUT SOMETHING HERE
 		ArrayList<String> chords = new ArrayList<String>();
 		
 		
@@ -73,8 +74,13 @@ public class musicMain {
 		case 5:
 			song = new TechnoSong(colorNameToInt(leastColor), colorNameToInt(averageColor), chords);
 			break;
+		default:
+			song = new BluesSong(colorNameToInt(leastColor), colorNameToInt(averageColor), chords);
 		}
-		
+
+
+		//plays the song
+		song.playSong(chords);
 		
 		
 		
