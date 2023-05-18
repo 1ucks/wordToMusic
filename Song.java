@@ -21,7 +21,7 @@ public abstract class Song {
 			setChords(null);
 		}
 		setSpeed(averageColour);
-		setFeel(mostCommonColour);
+		setFeel(leastCommonColor);
 	}
 
 	// the drumlines
