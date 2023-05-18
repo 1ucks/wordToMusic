@@ -1,4 +1,4 @@
-package wordToMusic;
+
 //vs code made me add this for the project, dont know if its different for eclipse, but you can prob just delte it
 
 import java.io.BufferedReader;
