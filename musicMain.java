@@ -1,3 +1,4 @@
+package wordToMusic;
 
 import java.io.IOException;
 import java.util.*;
@@ -25,26 +26,29 @@ public class musicMain {
 		//searches for the word using the api
 		ip.search();
 		
-		System.out.println("Link to image chosen: " + ip.getUrl());
+		
 		
 		//the main variables to determine the variations in the song
+		
+		//IMPORTANT GETAVERAGECOLOR METHOD MUST BE RAN FIRST BECAUSE IT HAS THE ERROR DETECTION
 		String averageColor = ip.getAverageColor();
+		
 		String dominantColor = ip.getDominantColor();
 		String leastColor = ip.getLeastColor();
 		
 		//prints
+		System.out.println("Printing the image :");
 		System.out.println("Average Color: " + averageColor);
 		System.out.println("Most Common Color: " + dominantColor);
-		System.out.println("Least Common Color: " + leastColor);
+		System.out.println("Least Common Color: " + leastColor+"\n");
 		ip.printImage();
 		
 		//chords
-		//KIERAN WHAT IS A CHORD HELP PLEASE PUT SOMETHING HERE
 		ArrayList<String> chords = new ArrayList<String>();
 		
 		
 		//The song
-		Song song;
+		Song song = null;
 		
 		//determining which type of song it is based on the most common color
 		switch(colorNameToInt(dominantColor)) {
@@ -74,14 +78,30 @@ public class musicMain {
 		case 5:
 			song = new TechnoSong(colorNameToInt(leastColor), colorNameToInt(averageColor), chords);
 			break;
-		default:
-			song = new BluesSong(colorNameToInt(leastColor), colorNameToInt(averageColor), chords);
 		}
-
-
-		//plays the song
-		song.playSong(chords);
+		int keyA = 0;
+		int keyB = 0;
+		int keyC = 0;
+		int keyD = 0;
+		int keyE = 0;
+		int keyF = 0;
+		//finding the chords based on the letters in the word
+		String[] possibleChords = {"A", "B", "C", "D", "E", "F"};
 		
+		for(int i = 0; i < word.length(); i++) {
+			
+			for(int j = 0; j < possibleChords.length; j ++) {
+				
+				if(word.toUpperCase().charAt(i) == possibleChords[j].charAt(0)) {
+					chords.add(possibleChords[j]);
+				}
+			}
+		}
+		//plays the song
+		System.out.print("Type play to play the song: ");
+		in.next();
+		System.out.println("\nPlaying . . .");
+		song.playSong(chords);
 		
 		
 		
