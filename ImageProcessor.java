@@ -1,4 +1,4 @@
-
+package wordToMusic;
 //vs code made me add this for the project, dont know if its different for eclipse, but you can prob just delte it
 
 import java.io.BufferedReader;
@@ -72,7 +72,7 @@ public class ImageProcessor {
         }
         //setting our var to the selected url
         this.imageUrl = new URL(link);
-
+        System.out.println("Link to image chosen: " + this.getUrl());
     }
 
     public URL getUrl(){
@@ -263,8 +263,11 @@ public class ImageProcessor {
     
     }
     public String getAverageColor() throws IOException {
-    	//returns a string of the most common color in the image in all lower case
     	
+    	//includes URL error detection
+    	
+    	//returns a string of the most common color in the image in all lower case
+    	try {
     	//getting the image from the link
     	BufferedImage im = ImageIO.read(this.imageUrl);
     	
@@ -329,7 +332,17 @@ public class ImageProcessor {
 		}
     	System.out.println("fail");
     	return "fail";
-    
+    	
+    	}catch(NullPointerException e ){
+    		
+    		System.out.println("\nUrl error, retrying\n");
+    	    //adds an underscore after the word  & retries if there is an ip adress error  
+    		this.word += "_";
+    	    this.search();
+    	    
+    	    return this.getAverageColor();
+    	    
+    	}
     }
     
     public void printImage() throws IOException {
@@ -347,26 +360,7 @@ public class ImageProcessor {
 		f.pack();
 		f.setLocationRelativeTo(null);
 		f.setVisible(true);
-		
-		
     }
-    public void printImage(String domC, String recC) throws IOException {
-    	//overloaded method to print the image chosen in a new window
-    	
-    	//getting the image from the link
-		BufferedImage im = ImageIO.read(this.imageUrl);
-		
-		Image im2 = im.getScaledInstance(im.getWidth() / 2, im.getHeight() / 2, Image.SCALE_DEFAULT);
-		//opens the window with the image v
-		JFrame f = new JFrame("Image Display");
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//adds image to f
-		f.getContentPane().add(new JLabel(new ImageIcon(im2)));
-		f.pack();
-		f.setLocationRelativeTo(null);
-		f.setVisible(true);
-		
 		
     }
     
-}
