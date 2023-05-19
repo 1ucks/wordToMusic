@@ -1,4 +1,4 @@
-
+package wordToMusic;
 import org.jfugue.player.Player;
 
 import java.util.ArrayList;
@@ -28,11 +28,9 @@ Pattern p3 = new Pattern(sound.substring(sound.indexOf("V3")));
 Pattern p4 = new Pattern(generateDrumlineSwitchup().repeat(2));
 String bass = generateIntroBassLine(keys, (int)(Math.random()*6));
 System.out.println(bass);
-Pattern pb0 = new Pattern(bass.substring(0, sound.indexOf("V1"))); 						//player.play(p0);				
-Pattern pb1 = new Pattern(bass.substring(sound.indexOf("V1"), sound.indexOf("V2")));
-Pattern pb2 = new Pattern(bass.substring(sound.indexOf("V2"), sound.indexOf("V3")));
-Pattern pb3 = new Pattern(bass.substring(sound.indexOf("V3")));
-player.play(pb0,pb1,pb2,pb3,p0,p1,p2,p3,p4);
+Pattern pb0 = new Pattern(bass); 						//player.play(p0);				
+
+player.play(pb0,p0,p1,p2,p3);
 }catch(Exception e) {
 	System.out.println("failed");
 	}
@@ -40,9 +38,11 @@ player.play(pb0,pb1,pb2,pb3,p0,p1,p2,p3,p4);
 	}
 		}
 		// the array of melodic rock instruments
-		private static String[] melodicInstruments = new String[] { "OVERDRIVEN_GUITAR", "GUITAR_FRET_NOISE", "STEEL_STRING_GUITAR",
-				"DISTORTION_GUITAR", "OVERDRIVEN_GUITAR", "ROCK_ORGAN", "TANGO_ACCORDIAN", "BARITONE_SAX", "SKAKUHACHI",
-				"OVERDRIVEN_GUITAR", "OVERDRIVEN_GUITAR", "GUNSHOT", "SHANAI" };
+		private static String[] melodicInstruments = new String[] {
+		        
+		        
+				"Applause",
+		        };
 		//list of all pitches possible in assending order
 		private static String[] pitches = new String[] {"Ab", "A", "Bb", "B", "C", "C#", "D", "Eb", "E", "F", "F#", "G"};
 		// the lengths of each note
@@ -54,9 +54,11 @@ player.play(pb0,pb1,pb2,pb3,p0,p1,p2,p3,p4);
 		// the drumkit for the switchup with twice the instruments
 		private static String[] rhythmParts2 = new String[] { "O", "S", "*", "X", "^", "o", "s", "`", "+", "x", "O", "S",
 				"*", "X", "^" };
-		private static String[] bassInstruments = new String[] { "ELECTRIC_BASS_FINGER", "ELECTRIC_BASS_PICK", "VOICE_OOHS",
-				"REED_ORGAN", "TUBA", "SLAP_BASS_1", "SLAP_BASS_2", "FRETLESS_BASS", "BARITONE_SAX", "BANJO",
-				"HELICOPTER", "BASSOON" };
+		private static String[] bassInstruments = new String[] {
+		  
+		        
+				"Voice_Oohs"
+		        };
 		// the special drumline instruments that sound cool
 		private static ArrayList<String> drumlineArr = new ArrayList<String>(
 				Arrays.asList("R", "A5", "C5", "D5", "F5", "G5"));
@@ -212,7 +214,7 @@ player.play(pb0,pb1,pb2,pb3,p0,p1,p2,p3,p4);
 						thePattern += " | ";
 					}
 				for(int count = 0; count < 4; count +=1) {
-					theMelody += "V" + count + " I[" + melodicInstruments[(int)(Math.random()*13)] + "] " +thePattern + "\n"; 
+					theMelody += "V" + count + " I[" + melodicInstruments[(int)(Math.random()*melodicInstruments.length)] + "] " +thePattern + "\n"; 
 				}
 				break;
 			case(1):
@@ -280,7 +282,7 @@ player.play(pb0,pb1,pb2,pb3,p0,p1,p2,p3,p4);
 				}
 			//it does it 4 times with different instruments
 			for(int count = 0; count < 4; count +=1) {
-				theMelody += "V" + count + " I[" + melodicInstruments[(int)(Math.random()*13)] + "] " +thePattern + "\n"; 
+				theMelody += "V" + count + " I[" + melodicInstruments[(int)(Math.random()*melodicInstruments.length)] + "] " +thePattern + "\n"; 
 			}
 				break;
 			case(2):
@@ -348,7 +350,7 @@ player.play(pb0,pb1,pb2,pb3,p0,p1,p2,p3,p4);
 				}
 			//it does it 4 times with different instruments
 			for(int count = 0; count < 4; count +=1) {
-				theMelody += "V" + count + " I[" + melodicInstruments[(int)(Math.random()*13)] + "] " +thePattern + "\n"; 
+				theMelody += "V" + count + " I[" + melodicInstruments[(int)(Math.random()*melodicInstruments.length)] + "] " +thePattern + "\n"; 
 			}
 				break;
 			case(3):
@@ -416,7 +418,7 @@ player.play(pb0,pb1,pb2,pb3,p0,p1,p2,p3,p4);
 				}
 			//it does it 4 times with different instruments
 			for(int count = 0; count < 4; count +=1) {
-				theMelody += "V" + count + " I[" + melodicInstruments[(int)(Math.random()*13)] + "] " +thePattern + "\n"; 
+				theMelody += "V" + count + " I[" + melodicInstruments[(int)(Math.random()*melodicInstruments.length)] + "] " +thePattern + "\n"; 
 			}
 				break;
 			case(4):
@@ -484,7 +486,7 @@ player.play(pb0,pb1,pb2,pb3,p0,p1,p2,p3,p4);
 				}
 			//it does it 4 times with different instruments
 			for(int count = 0; count < 4; count +=1) {
-				theMelody += "V" + count + " I[" + melodicInstruments[(int)(Math.random()*13)] + "] " +thePattern + "\n"; 
+				theMelody += "V" + count + " I[" + melodicInstruments[(int)(Math.random()*melodicInstruments.length)] + "] " +thePattern + "\n"; 
 			}
 				break;
 			case(5):
@@ -552,7 +554,7 @@ player.play(pb0,pb1,pb2,pb3,p0,p1,p2,p3,p4);
 				}
 			//it does it 4 times with different instruments
 			for(int count = 0; count < 4; count +=1) {
-				theMelody += "V" + count + " I[" + melodicInstruments[(int)(Math.random()*13)] + "] " +thePattern + "\n"; 
+				theMelody += "V" + count + " I[" + melodicInstruments[(int)(Math.random()*melodicInstruments.length)] + "] " +thePattern + "\n"; 
 			}
 				break;
 			default:
@@ -715,7 +717,7 @@ player.play(pb0,pb1,pb2,pb3,p0,p1,p2,p3,p4);
 			}
 			String theMelody = "";
 
-			theMelody += "V" + (int)(4) + " I[" + bassInstruments[(int)(Math.random()*13)] + "] " +thePattern + "\n"; 
+			theMelody += "V" + (int)(4) + " I[" + bassInstruments[(int)(Math.random()*bassInstruments.length)] + "] " +thePattern + "\n"; 
 		
 		return theMelody;
 		}
