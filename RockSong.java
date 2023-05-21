@@ -4,7 +4,7 @@ import org.jfugue.rhythm.Rhythm;
 import java.util.*;
 import org.jfugue.pattern.Pattern;
 
-public class RockSong extends Song {
+public abstract class RockSong extends Song {
 	// constructor
 	public RockSong(int mostCommonColour, int averageColour, ArrayList<String> theChords) {
 		super(mostCommonColour, averageColour, theChords);
@@ -28,9 +28,7 @@ public class RockSong extends Song {
 	// the drumkit for the switchup with twice the instruments
 	private static String[] rhythmParts2 = new String[] { "O", "S", "*", "X", "^", "o", "s", "`", "+", "x", "O", "S",
 			"*", "X", "^" };
-	// the special drumline instruments that sound cool
-	private static ArrayList<String> drumlineArr = new ArrayList<String>(
-			Arrays.asList("R", "A5", "C5", "D5", "F5", "G5"));
+	
 
 	// the drumlines
 	public Pattern generateDrumline(int length) {
@@ -721,44 +719,19 @@ public class RockSong extends Song {
 	public void playSong(ArrayList<String> keys){
 		System.out.println("Generating song, this make some time");
 		//generating
-		Pattern drumP = generateDrumline();
-		Pattern drumSwitch = generateDrumlineSwitchup();
+		Pattern drumP = generateDrumline(80);
 		
-		Pattern introP = new Pattern(generateIntroMelody(keys));
-		Pattern introBack = new Pattern(generateIntroBackground(keys));
-		Pattern introBass = new Pattern(generateIntroBassLine(keys));
+		
+		Pattern melodyP = new Pattern(generateMelody(keys));
+		
+		Pattern bassP = new Pattern(generateBassLine(keys));
 
-		Pattern chorusP = new Pattern(generateChorusMelody(keys));
-		Pattern chorusBack = new Pattern(generateChorusBackground(keys));
-		Pattern chorusBass = new Pattern(generateChorusBassLine(keys));
-
-		Pattern verse1P = new Pattern(generateVerse1Melody(keys));
-		Pattern verse1Back = new Pattern(generateVerse1Background(keys)); 
-		Pattern verse1Bass = new Pattern(generateVerse1BassLine(keys));
-
-		Pattern bridgeP = new Pattern(generateBridgeMelody(keys));
-		Pattern bridgeBack = new Pattern(generateBridgeBackground(keys));
-		Pattern bridgeBass= new Pattern(generateBridgeBassLine(keys));
-
-		Pattern outroP = new Pattern(generateOutroMelody(keys));
-		Pattern outroBack = new Pattern(generateOutroBackground(keys));
-		Pattern outroBass = new Pattern(generateOutroBassLine(keys));
-
+		
 		Player player = new Player();
 
 		//playing the song
-		//intro
-		player.play(introP, introBack, introBass);
-		//chorus
-		player.play(drumP, drumSwitch, chorusP, chorusBack, chorusBass);
-		//verse1
-		player.play(verse1P, verse1Back, verse1Bass);
-		//chorus
-		player.play(drumP, drumSwitch, chorusP, chorusBack, chorusBass);
-		//bridge
-		player.play(bridgeP, bridgeBack, bridgeBass, drumP, drumSwitch);
-		//outro
-		player.play(outroP, outroBack, outroBass);
+		
+		player.play(drumP, melodyP, bassP);
 
 
 	}
