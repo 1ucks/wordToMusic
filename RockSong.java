@@ -1,4 +1,3 @@
-package wordToMusic;
 
 import org.jfugue.player.Player;
 import org.jfugue.rhythm.Rhythm;
@@ -23,15 +22,13 @@ public class RockSong extends Song {
 	// the lengths of each note
 	private static double[] noteLengths = new double[] { 4, 3, 2, 1.5, 1, 0.75, 0.5, 0.375, 0.25, 0.125 };
 	// the name of each note at the index
-	private static String[] noteNames = new String[] { "w", "h.", "h", "q.", "q", "i.", "i", "s.", "s", "t" };
+	private static String[] noteNames = new String[] { "w", "h.", "h", "q.", "q", "i.", "i", "s"};
 	// list of Rhythm pieces for drumkit
 	private static String[] rhythmParts = new String[] { "O", "S", "*", "o", "s", "^", "`", "+", "X", "x" };
 	// the drumkit for the switchup with twice the instruments
 	private static String[] rhythmParts2 = new String[] { "O", "S", "*", "X", "^", "o", "s", "`", "+", "x", "O", "S",
 			"*", "X", "^" };
-	// the special drumline instruments that sound cool
-	private static ArrayList<String> drumlineArr = new ArrayList<String>(
-			Arrays.asList("R", "A5", "C5", "D5", "F5", "G5"));
+	
 
 	// the drumlines
 	public Pattern generateDrumline(int length) {
@@ -115,6 +112,7 @@ public class RockSong extends Song {
 		return drumline;
 	}
 
+<<<<<<< HEAD
 	public Pattern generateDrumlineSwitchup() {
 		// the result pattern
 		Pattern drumline = new Pattern();
@@ -192,6 +190,10 @@ public class RockSong extends Song {
 
 	// the melodies
 	public String generateIntroMelody(ArrayList<String> keys) {
+=======
+	
+	public String generateMelody(ArrayList<String> keys) {
+>>>>>>> b81d140e66f109ca1b12d8b6efe8e5cc159d4886
 		// intro will be 4 measures aka 2 drum switchups for intrest with a key switch
 		// in measure 3
 		int key1;
@@ -235,7 +237,7 @@ public class RockSong extends Song {
 		case (0):
 			// angry chords: idk probably like 1/2step up or down to create discordanent
 			// sounds
-			for (int measureCount = 1; measureCount <= 4; measureCount += 1) {
+			for (int measureCount = 1; measureCount <= 50; measureCount += 1) {
 				if (measureCount == 3) {
 					key1 = key2;
 				}
@@ -277,7 +279,7 @@ public class RockSong extends Song {
 		case (1):
 			// orange happy and slightly angry and slightly royal sounding idk
 			// keeps track of the measure
-			for (int measureCount = 1; measureCount <= 4; measureCount += 1) {
+			for (int measureCount = 1; measureCount <= 50; measureCount += 1) {
 				// on measure 3 it switches the key
 				if (measureCount == 3) {
 					key1 = key2;
@@ -347,7 +349,7 @@ public class RockSong extends Song {
 		case (2):
 			// yellow
 			// keeps track of the measure
-			for (int measureCount = 1; measureCount <= 4; measureCount += 1) {
+			for (int measureCount = 1; measureCount <= 50; measureCount += 1) {
 				// on measure 3 it switches the key
 				if (measureCount == 3) {
 					key1 = key2;
@@ -417,7 +419,7 @@ public class RockSong extends Song {
 		case (3):
 			// green
 			// keeps track of the measure
-			for (int measureCount = 1; measureCount <= 4; measureCount += 1) {
+			for (int measureCount = 1; measureCount <= 50; measureCount += 1) {
 				// on measure 3 it switches the key
 				if (measureCount == 3) {
 					key1 = key2;
@@ -487,7 +489,7 @@ public class RockSong extends Song {
 		case (4):
 			// sad
 			// keeps track of the measure
-			for (int measureCount = 1; measureCount <= 4; measureCount += 1) {
+			for (int measureCount = 1; measureCount <= 50; measureCount += 1) {
 				// on measure 3 it switches the key
 				if (measureCount == 3) {
 					key1 = key2;
@@ -495,13 +497,13 @@ public class RockSong extends Song {
 				// keeps track of what beat its on
 				double beatCount = 0;
 				// dictates the octave
-				int octave = (int) (Math.random() * 4 + 3);
+				int octave = (int) (Math.random() * 2 + 4);
 				// while a measure is not complete
 				while (beatCount < 4) {
 					// picks a random beat that fits in the measure
-					int theRandom = (int) (Math.random() * noteLengths.length);
+					int theRandom = ((int) (Math.random() * 2))*2;
 					// if it does not fit it adds it skips and tries again
-					if (beatCount + noteLengths[theRandom] > 4) {
+					if (beatCount + noteLengths[theRandom] > 4) {							
 						continue;
 					}
 					// it adds to the pattern the note name, the octave, and time length
@@ -557,7 +559,7 @@ public class RockSong extends Song {
 		case (5):
 			// purple
 			// keeps track of the measure
-			for (int measureCount = 1; measureCount <= 4; measureCount += 1) {
+			for (int measureCount = 1; measureCount <= 50; measureCount += 1) {
 				// on measure 3 it switches the key
 				if (measureCount == 3) {
 					key1 = key2;
@@ -630,24 +632,9 @@ public class RockSong extends Song {
 		return theMelody;
 	}
 
-	public String generateChorusMelody(ArrayList<String> keys) {
-
-	}
-
-	public String generateVerse1Melody(ArrayList<String> keys) {
-
-	}
-
-	public String generateBridgeMelody(ArrayList<String> keys) {
-
-	}
-
-	public String generateOutroMelody(ArrayList<String> keys) {
-
-	}
-
+	
 	// the basslines
-	public String generateIntroBassLine(ArrayList<String> keys) {
+	public String generateBassLine(ArrayList<String> keys) {
 		int key1;
 		int key2;
 		if(keys == null) {
@@ -766,8 +753,8 @@ public class RockSong extends Song {
 			break;
 		}
 		String thePattern = "";
-		for(int measureCount = 1; measureCount<=4; measureCount +=1) {
-			if (measureCount ==3) {
+		for(int measureCount = 1; measureCount<=50; measureCount +=1) {
+			if (measureCount ==26) {
 				key1 = key2;
 			}
 			double beatCount = 0; 
@@ -802,89 +789,29 @@ public class RockSong extends Song {
 		}
 		String theMelody = "";
 	
-		theMelody += "V" + (int)(4) + " I[" + bassInstruments[(int)(Math.random()*13)] + "] " +thePattern + "\n"; 
+		theMelody += "V" + (4) + " I[" + bassInstruments[(int)(Math.random()*13)] + "] " +thePattern + "\n"; 
 	
 	return theMelody;
 	}
 
-	public String generateChorusBassLine(ArrayList<String> keys) {
-
-	}
-
-	public String generateVerse1BassLine(ArrayList<String> keys) {
-
-	}
-
-	public String generateBridgeBassLine(ArrayList<String> keys) {
-
-	}
-
-	public String generateOutroBassLine(ArrayList<String> keys) {
-
-	}
-
-	// the background melodies
-	public String generateIntroBackground(ArrayList<String> keys) {
-
-	}
-
-	public String generateChorusBackground(ArrayList<String> keys) {
-
-	}
-
-	public String generateVerse1Background(ArrayList<String> keys) {
-
-	}
-
-	public String generateBridgeBackground(ArrayList<String> keys) {
-
-	}
-
-	public String generateOutroBackground(ArrayList<String> keys) {
-
-	}
+	
 	//main method to generate and play the song
 	public void playSong(ArrayList<String> keys){
 		System.out.println("Generating song, this make some time");
 		//generating
-		Pattern drumP = generateDrumline();
-		Pattern drumSwitch = generateDrumlineSwitchup();
+		Pattern drumP = generateDrumline(80);
 		
-		Pattern introP = new Pattern(generateIntroMelody(keys));
-		Pattern introBack = new Pattern(generateIntroBackground(keys));
-		Pattern introBass = new Pattern(generateIntroBassLine(keys));
+		
+		Pattern melodyP = new Pattern(generateMelody(keys));
+		
+		Pattern bassP = new Pattern(generateBassLine(keys));
 
-		Pattern chorusP = new Pattern(generateChorusMelody(keys));
-		Pattern chorusBack = new Pattern(generateChorusBackground(keys));
-		Pattern chorusBass = new Pattern(generateChorusBassLine(keys));
-
-		Pattern verse1P = new Pattern(generateVerse1Melody(keys));
-		Pattern verse1Back = new Pattern(generateVerse1Background(keys)); 
-		Pattern verse1Bass = new Pattern(generateVerse1BassLine(keys));
-
-		Pattern bridgeP = new Pattern(generateBridgeMelody(keys));
-		Pattern bridgeBack = new Pattern(generateBridgeBackground(keys));
-		Pattern bridgeBass= new Pattern(generateBridgeBassLine(keys));
-
-		Pattern outroP = new Pattern(generateOutroMelody(keys));
-		Pattern outroBack = new Pattern(generateOutroBackground(keys));
-		Pattern outroBass = new Pattern(generateOutroBassLine(keys));
-
+		
 		Player player = new Player();
 
 		//playing the song
-		//intro
-		player.play(introP, introBack, introBass);
-		//chorus
-		player.play(drumP, drumSwitch, chorusP, chorusBack, chorusBass);
-		//verse1
-		player.play(verse1P, verse1Back, verse1Bass);
-		//chorus
-		player.play(drumP, drumSwitch, chorusP, chorusBack, chorusBass);
-		//bridge
-		player.play(bridgeP, bridgeBack, bridgeBass, drumP, drumSwitch);
-		//outro
-		player.play(outroP, outroBack, outroBass);
+		
+		player.play(drumP, melodyP, bassP);
 
 
 	}

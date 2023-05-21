@@ -21,6 +21,7 @@ public abstract class Song {
 	// the drumlines
 	public abstract Pattern generateDrumline(int length);
 
+<<<<<<< HEAD
 	// the melody
 	public abstract String generateMelody(ArrayList<String> keys);
 
@@ -33,6 +34,18 @@ public abstract class Song {
 
 	
 	//main method to play the song
+=======
+	
+
+	// the melodies
+	public abstract String generateMelody(ArrayList<String> keys);
+
+	
+	// the basslines
+	public abstract String generateBassLine(ArrayList<String> keys);
+
+		//main method to play the song
+>>>>>>> b81d140e66f109ca1b12d8b6efe8e5cc159d4886
 
 	public abstract void playSong(ArrayList<String> keys);
 
