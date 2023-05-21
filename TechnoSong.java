@@ -3,7 +3,7 @@ import org.jfugue.rhythm.Rhythm;
 import java.util.*;
 import org.jfugue.pattern.Pattern;
 
-public abstract class TechnoSong extends Song {
+public class TechnoSong extends Song {
 	private static String[] melodicInstruments = new String[] { "TINKLE_BELL", "GOBLINS", "ECHOES", "SOUNDTRACK",
 			"CRYSTAL", "GOBLINS", "GOBLINS", "GOBLINS", "REVERSE_CYMBAL", "BIRD_TWEET", "TELEPHONE_RING",
 			"TELEPHONE_RING", "BLOWN_BOTTLE" };
