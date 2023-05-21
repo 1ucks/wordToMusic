@@ -556,7 +556,7 @@ public class RockSong extends Song {
 
 	
 	// the basslines
-	public String generateIntroBassLine(ArrayList<String> keys) {
+	public String generateBassLine(ArrayList<String> keys) {
 		int key1;
 		int key2;
 		if(keys == null) {
@@ -716,42 +716,7 @@ public class RockSong extends Song {
 	return theMelody;
 	}
 
-	public String generateChorusBassLine(ArrayList<String> keys) {
-
-	}
-
-	public String generateVerse1BassLine(ArrayList<String> keys) {
-
-	}
-
-	public String generateBridgeBassLine(ArrayList<String> keys) {
-
-	}
-
-	public String generateOutroBassLine(ArrayList<String> keys) {
-
-	}
-
-	// the background melodies
-	public String generateIntroBackground(ArrayList<String> keys) {
-
-	}
-
-	public String generateChorusBackground(ArrayList<String> keys) {
-
-	}
-
-	public String generateVerse1Background(ArrayList<String> keys) {
-
-	}
-
-	public String generateBridgeBackground(ArrayList<String> keys) {
-
-	}
-
-	public String generateOutroBackground(ArrayList<String> keys) {
-
-	}
+	
 	//main method to generate and play the song
 	public void playSong(ArrayList<String> keys){
 		System.out.println("Generating song, this make some time");
