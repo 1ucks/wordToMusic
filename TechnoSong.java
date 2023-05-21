@@ -3,7 +3,7 @@ import org.jfugue.rhythm.Rhythm;
 import java.util.*;
 import org.jfugue.pattern.Pattern;
 
-public class TechnoSong extends Song {
+public abstract class TechnoSong extends Song {
 	private static String[] melodicInstruments = new String[] { "TINKLE_BELL", "GOBLINS", "ECHOES", "SOUNDTRACK",
 			"CRYSTAL", "GOBLINS", "GOBLINS", "GOBLINS", "REVERSE_CYMBAL", "BIRD_TWEET", "TELEPHONE_RING",
 			"TELEPHONE_RING", "BLOWN_BOTTLE" };
@@ -699,6 +699,25 @@ public class TechnoSong extends Song {
 		return theMelody;
 	}
 
-	// the background melodies
+	//play the song
+	public void playSong(ArrayList<String> keys){
+		System.out.println("Generating song, this make some time");
+		//generating
+		Pattern drumP = generateDrumline(80);
+		
+		
+		Pattern melodyP = new Pattern(generateMelody(keys));
+		
+		Pattern bassP = new Pattern(generateBassLine(keys));
+
+		
+		Player player = new Player();
+
+		//playing the song
+		
+		player.play(drumP, melodyP, bassP);
+
+
+	}
 
 }
