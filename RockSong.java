@@ -34,78 +34,84 @@ public class RockSong extends Song {
 			Arrays.asList("R", "A5", "C5", "D5", "F5", "G5"));
 
 	// the drumlines
-	public Pattern generateDrumline() {
-		// the result pattern
-		Pattern drumline = new Pattern();
-		// the rhythm with the kit
-		Rhythm drumkit = new Rhythm("................................................");
-		// the actual special instrument pattern
-		String theDrumline = " V9 I ";
-		// what measure and beat it is on
-		int measureCount = 0;
-		double beatCount = 0;
-		// while to count the measure
-		while (measureCount < 6) {
-			// while to count the beat
-			while (beatCount < 4) {
-				// picks a random beat that fits in the measure
-				int theRandom = (int) (Math.random() * noteLengths.length);
-				// if it dont fit it adds it skips and tries again
-				if (beatCount + noteLengths[theRandom] > 4) {
-					continue;
+	public Pattern generateDrumline(int length) {
+		//taking voice 9 
+		String theDrumline = " V9 I |";
 
-				}
-				// picks a random instrument for the chosen beat
-				int random2 = (int) (Math.random() * drumlineArr.size());
-				// adds it to the big string pattern
-				theDrumline += "" + drumlineArr.get(random2) + noteNames[theRandom] + " ";
-				// increment beatCounter
-				beatCount += noteLengths[theRandom];
-			}
-			// marks the end of the measure
-			theDrumline += " | ";
-			// resets the beat counter
-			beatCount = 0;
-			// increments measure counter
-			measureCount += 1;
-		}
-		// adds the beats to the total drumline
+		//the base pattern
+		Pattern drumline = new Pattern();
+		//adding the voice to the pattern
 		drumline.add(theDrumline);
-		// for loop for the instruments in the drumkit
-		for (int outCountRhythm = 0; outCountRhythm < rhythmParts.length; outCountRhythm += 1) {
-			// string for the drumkit music
-			String rhythmAdder = "";
-			// goes through each beat in the drumkit
-			for (int inCountRhythm = 0; inCountRhythm < 48; inCountRhythm += 1) {
-				// if its not on bass drum, snare, or crash it will play random notes
-				if (outCountRhythm > 2) {
-					// it generates a random number 0-3
-					int tF = (int) (Math.random() * 4);
-					// if the number is one
-					if (tF == 1) {
-						// it adds the instrument/note to the music
-						rhythmAdder += rhythmParts[outCountRhythm];
-					} else { // otherwise it adds a rest
-						rhythmAdder += ".";
-					}
-					// if it is snare, bass or crash it plays on beats 2 and 4 like a rock song has
-					// emphasis on
-				} else {
-					// if its on beat 2 or 4
-					if ((inCountRhythm - 2) % 4 == 0) {
-						// it add the instrument/note to the string
-						rhythmAdder += rhythmParts[outCountRhythm];
-					} else { // otherwise it rests
-						rhythmAdder += ".";
-					}
-				}
-			}
-			// it adds the string as a layer to the rhythm
-			drumkit.addLayer(rhythmAdder);
+		//String for base drum layer to our rhthym
+		String base = "";
+		//String for the metro layer
+		String tick = "";
+
+		//Making a base and a metro layer based on the specified length
+		for(int i =0; i < length; i++){
+			base+=".";
+			tick+="`";
 		}
-		// it adds the rhythm to the pattern
-		drumline.add(drumkit);
-		// it returns the pattern
+
+		//adding the base and metro layers
+        Rhythm rhythm = new Rhythm().addLayer(base)
+		.addLayer(tick);
+		
+
+
+		//snare drum ~ 2-4
+		
+		int snareDistance = (int) (Math.random()*3)+3;
+
+		//layers for snare and normal drums
+		String snare = "";
+		String normDrum = "";
+		boolean doCymbal = false;
+
+
+		for(int i = 1; i <= length; i ++){
+			if(i != 0 && i%snareDistance == 0){
+				//every random number adds a snare, and nothing else
+				snare += "S";
+				normDrum+= ".";
+				doCymbal = false;
+			}
+			else{
+				
+				snare+= ".";
+				//randomly deciding which drums to use/not use
+				int drumRand = (int) (Math.random()*10)+1;
+				System.out.println(drumRand);
+				//O is more likely to appear after a o
+				if(normDrum.length()>0 && normDrum.charAt(normDrum.length()-1) == 'o'){
+					drumRand+=5;
+				}
+				//cymbal is only possible after a blank, and only if the random number is less than 5
+				else if(normDrum.length()>0 && normDrum.charAt(normDrum.length()-1) == '.' && doCymbal){
+					drumRand -=5;
+				}
+				//decisions
+				if(drumRand < 0){
+					normDrum+="+";
+				}
+				else if(drumRand < 3){
+					normDrum+=".";
+				}
+				else if(drumRand < 7){
+					normDrum+="o";
+				}
+				else{
+					normDrum+="O";
+				}
+				doCymbal = true;
+
+			}
+		}
+		//adding them to the rhythm
+		rhythm.addLayer(snare);
+		rhythm.addLayer(normDrum);
+		drumline.add(rhythm);
+		
 		return drumline;
 	}
 
