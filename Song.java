@@ -25,44 +25,18 @@ public abstract class Song {
 	}
 
 	// the drumlines
-	public abstract Pattern generateDrumline();
+	public abstract Pattern generateDrumline(int length);
 
-	public abstract Pattern generateDrumlineSwitchup();
+	
 
 	// the melodies
-	public abstract String generateIntroMelody(ArrayList<String> keys);
+	public abstract String generateMelody(ArrayList<String> keys);
 
-	public abstract String generateChorusMelody(ArrayList<String> keys);
-
-	public abstract String generateVerse1Melody(ArrayList<String> keys);
-
-	public abstract String generateBridgeMelody(ArrayList<String> keys);
-
-	public abstract String generateOutroMelody(ArrayList<String> keys);
-
-	// the basslines
-	public abstract String generateIntroBassLine(ArrayList<String> keys);
-
-	public abstract String generateChorusBassLine(ArrayList<String> keys);
-
-	public abstract String generateVerse1BassLine(ArrayList<String> keys);
-
-	public abstract String generateBridgeBassLine(ArrayList<String> keys);
-
-	public abstract String generateOutroBassLine(ArrayList<String> keys);
-
-	// the background melodies
-	public abstract String generateIntroBackground(ArrayList<String> keys);
-
-	public abstract String generateChorusBackground(ArrayList<String> keys);
-
-	public abstract String generateVerse1Background(ArrayList<String> keys);
-
-	public abstract String generateBridgeBackground(ArrayList<String> keys);
-
-	public abstract String generateOutroBackground(ArrayList<String> keys);
 	
-	//main method to play the song
+	// the basslines
+	public abstract String generateBassLine(ArrayList<String> keys);
+
+		//main method to play the song
 
 	public abstract void playSong(ArrayList<String> keys);
 
