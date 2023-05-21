@@ -6,12 +6,6 @@ import org.jfugue.pattern.Pattern;
 public abstract class Song {
 	private int speed;// the speed or bpm of the piece
 	private int feel;// the feel of the music
-	private Pattern intro; // it goes intro -> chorus -> verse 1 -> chorus -> verse 2 -> bridge -> chorus -> outro
-	private Pattern chorus;
-	private Pattern verse1;
-	private Pattern verse2;
-	private Pattern bridge;
-	private Pattern Outro;
 	private ArrayList<String> chords;// the chords included in the word submitted
 
 	public Song(int leastCommonColor, int averageColour, ArrayList<String> theChords) {
@@ -25,42 +19,18 @@ public abstract class Song {
 	}
 
 	// the drumlines
-	public abstract Pattern generateDrumline();
+	public abstract Pattern generateDrumline(int length);
 
-	public abstract Pattern generateDrumlineSwitchup();
+	// the melody
+	public abstract String generateMelody(ArrayList<String> keys);
 
-	// the melodies
-	public abstract String generateIntroMelody(ArrayList<String> keys);
 
-	public abstract String generateChorusMelody(ArrayList<String> keys);
+	// the bassline
+	public abstract String generateBass(ArrayList<String> keys);
 
-	public abstract String generateVerse1Melody(ArrayList<String> keys);
 
-	public abstract String generateBridgeMelody(ArrayList<String> keys);
 
-	public abstract String generateOutroMelody(ArrayList<String> keys);
 
-	// the basslines
-	public abstract String generateIntroBassLine(ArrayList<String> keys);
-
-	public abstract String generateChorusBassLine(ArrayList<String> keys);
-
-	public abstract String generateVerse1BassLine(ArrayList<String> keys);
-
-	public abstract String generateBridgeBassLine(ArrayList<String> keys);
-
-	public abstract String generateOutroBassLine(ArrayList<String> keys);
-
-	// the background melodies
-	public abstract String generateIntroBackground(ArrayList<String> keys);
-
-	public abstract String generateChorusBackground(ArrayList<String> keys);
-
-	public abstract String generateVerse1Background(ArrayList<String> keys);
-
-	public abstract String generateBridgeBackground(ArrayList<String> keys);
-
-	public abstract String generateOutroBackground(ArrayList<String> keys);
 	
 	//main method to play the song
 

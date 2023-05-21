@@ -72,7 +72,7 @@ public class musicMain {
 			break;
 		
 		case 4:
-			song = new BluesSong(colorNameToInt(leastColor), colorNameToInt(averageColor), chords);
+			song = new LowFi(colorNameToInt(leastColor), colorNameToInt(averageColor), chords);
 			break;
 		
 		case 5:
