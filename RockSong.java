@@ -22,7 +22,7 @@ public class RockSong extends Song {
 	// the lengths of each note
 	private static double[] noteLengths = new double[] { 4, 3, 2, 1.5, 1, 0.75, 0.5, 0.375, 0.25, 0.125 };
 	// the name of each note at the index
-	private static String[] noteNames = new String[] { "w", "h.", "h", "q.", "q", "i.", "i", "s.", "s", "t" };
+	private static String[] noteNames = new String[] { "w", "h.", "h", "q.", "q", "i.", "i", "s"};
 	// list of Rhythm pieces for drumkit
 	private static String[] rhythmParts = new String[] { "O", "S", "*", "o", "s", "^", "`", "+", "X", "x" };
 	// the drumkit for the switchup with twice the instruments
@@ -419,13 +419,13 @@ public class RockSong extends Song {
 				// keeps track of what beat its on
 				double beatCount = 0;
 				// dictates the octave
-				int octave = (int) (Math.random() * 4 + 3);
+				int octave = (int) (Math.random() * 2 + 4);
 				// while a measure is not complete
 				while (beatCount < 4) {
 					// picks a random beat that fits in the measure
-					int theRandom = (int) (Math.random() * noteLengths.length);
+					int theRandom = ((int) (Math.random() * 2))*2;
 					// if it does not fit it adds it skips and tries again
-					if (beatCount + noteLengths[theRandom] > 4) {
+					if (beatCount + noteLengths[theRandom] > 4) {							
 						continue;
 					}
 					// it adds to the pattern the note name, the octave, and time length
@@ -676,7 +676,7 @@ public class RockSong extends Song {
 		}
 		String thePattern = "";
 		for(int measureCount = 1; measureCount<=50; measureCount +=1) {
-			if (measureCount ==3) {
+			if (measureCount ==26) {
 				key1 = key2;
 			}
 			double beatCount = 0; 
@@ -711,7 +711,7 @@ public class RockSong extends Song {
 		}
 		String theMelody = "";
 	
-		theMelody += "V" + (int)(4) + " I[" + bassInstruments[(int)(Math.random()*13)] + "] " +thePattern + "\n"; 
+		theMelody += "V" + (4) + " I[" + bassInstruments[(int)(Math.random()*13)] + "] " +thePattern + "\n"; 
 	
 	return theMelody;
 	}
