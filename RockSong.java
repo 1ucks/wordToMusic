@@ -4,7 +4,7 @@ import org.jfugue.rhythm.Rhythm;
 import java.util.*;
 import org.jfugue.pattern.Pattern;
 
-public abstract class RockSong extends Song {
+public class RockSong extends Song {
 	// constructor
 	public RockSong(int mostCommonColour, int averageColour, ArrayList<String> theChords) {
 		super(mostCommonColour, averageColour, theChords);
