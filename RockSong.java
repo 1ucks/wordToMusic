@@ -112,88 +112,8 @@ public class RockSong extends Song {
 		return drumline;
 	}
 
-<<<<<<< HEAD
-	public Pattern generateDrumlineSwitchup() {
-		// the result pattern
-		Pattern drumline = new Pattern();
-		// the rhythm with the kit
-		Rhythm drumkit = new Rhythm("................................................");
-		// the actual special instrument pattern
-		String theDrumline = " V9 I ";
-		// what measure and beat it is on
-		int measureCount = 0;
-		double beatCount = 0;
-		// while to count the measure
-		while (measureCount < 50) {
-			// while to count the beat
-			while (beatCount < 4) {
-				// picks a random beat that fits in the measure
-				int theRandom = (int) (Math.random() * noteLengths.length);
-				// if it dont fit it adds it skips and tries again
-				if (beatCount + noteLengths[theRandom] > 4) {
-					continue;
-
-				}
-				// picks a random instrument for the chosen beat
-				int random2 = (int) (Math.random() * drumlineArr.size());
-				// adds it to the big string pattern
-				theDrumline += "" + drumlineArr.get(random2) + noteNames[theRandom] + " ";
-				// increment beatCounter
-				beatCount += noteLengths[theRandom];
-			}
-			// marks the end of the measure
-			theDrumline += " | ";
-			// resets the beat counter
-			beatCount = 0;
-			// increments measure counter
-			measureCount += 1;
-		}
-		// adds the beats to the total drumline
-		drumline.add(theDrumline);
-		// for loop for the instruments in the drumkit
-		for (int outCountRhythm = 0; outCountRhythm < rhythmParts2.length; outCountRhythm += 1) {
-			// string for the drumkit music
-			String rhythmAdder = "";
-			// goes through each beat in the drumkit
-			for (int inCountRhythm = 0; inCountRhythm < 16; inCountRhythm += 1) {
-				// if its not on bass drum, snare, or crash it will play random notes
-				if (outCountRhythm > 5) {
-					// it generates a random number 0-3
-					int tF = (int) (Math.random() * 1.5);
-					// if the number is one
-					if (tF == 0) {
-						// it adds the instrument/note to the music
-						rhythmAdder += rhythmParts2[outCountRhythm];
-					} else { // otherwise it adds a rest
-						rhythmAdder += ".";
-					}
-					// if it is snare, bass or crash it plays on beats 2 and 4 like a rock song has
-					// emphasis on
-				} else {
-					// if its on beat 2 or 4
-					if ((inCountRhythm - 2) % 4 == 0) {
-						// it add the instrument/note to the string
-						rhythmAdder += rhythmParts2[outCountRhythm];
-					} else { // otherwise it rests
-						rhythmAdder += ".";
-					}
-				}
-			}
-			// it adds the string as a layer to the rhythm
-			drumkit.addLayer(rhythmAdder);
-		}
-		// it adds the rhythm to the pattern
-		drumline.add(drumkit);
-		// it returns the pattern
-		return drumline;
-	}
-
-	// the melodies
-	public String generateIntroMelody(ArrayList<String> keys) {
-=======
 	
 	public String generateMelody(ArrayList<String> keys) {
->>>>>>> b81d140e66f109ca1b12d8b6efe8e5cc159d4886
 		// intro will be 4 measures aka 2 drum switchups for intrest with a key switch
 		// in measure 3
 		int key1;
@@ -799,10 +719,17 @@ public class RockSong extends Song {
 	public void playSong(ArrayList<String> keys){
 		System.out.println("Generating song, this make some time");
 		//generating
-		Pattern drumP = generateDrumline(80);
+		Pattern drumP = generateDrumline(400);
 		
+		String sound = generateMelody(keys);
+		//player.play(sound);
+		System.out.println(sound);
+		System.out.println();
+		Pattern p0 = new Pattern(sound.substring(0, sound.indexOf("V1"))); 						//player.play(p0);				
+		Pattern p1 = new Pattern(sound.substring(sound.indexOf("V1"), sound.indexOf("V2")));
+		Pattern p2 = new Pattern(sound.substring(sound.indexOf("V2"), sound.indexOf("V3")));
+		Pattern p3 = new Pattern(sound.substring(sound.indexOf("V3")));
 		
-		Pattern melodyP = new Pattern(generateMelody(keys));
 		
 		Pattern bassP = new Pattern(generateBassLine(keys));
 
@@ -811,7 +738,7 @@ public class RockSong extends Song {
 
 		//playing the song
 		
-		player.play(drumP, melodyP, bassP);
+		player.play(drumP, p0, p1, p2,p3, bassP);
 
 
 	}
