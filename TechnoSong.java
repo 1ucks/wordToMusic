@@ -723,28 +723,36 @@ public class TechnoSong extends Song {
 	//play the song
 	public void playSong(ArrayList<String> keys){
 		System.out.println("Generating song, this make some time");
+		int count = 0;
+		while(count < Integer.MAX_VALUE) {
+			count +=1;
+			try {
+				System.out.println("generating");
 		//generating
 		Pattern drumP = generateDrumline(450);
 		
 		String sound = generateMelody(keys);
-		//player.play(sound);
-		System.out.println(sound);
-		System.out.println();
-		Pattern p0 = new Pattern(sound.substring(0, sound.indexOf("V1"))); 						//player.play(p0);				
+		
+		
+		
+		Pattern p0 = new Pattern(sound.substring(0, sound.indexOf("V1"))); 		
 		Pattern p1 = new Pattern(sound.substring(sound.indexOf("V1"), sound.indexOf("V2")));
 		Pattern p2 = new Pattern(sound.substring(sound.indexOf("V2"), sound.indexOf("V3")));
 		Pattern p3 = new Pattern(sound.substring(sound.indexOf("V3")));
 		
 		
 		Pattern bassP = new Pattern(generateBassLine(keys));
-		System.out.println(bassP);
+		
 		
 		Player player = new Player();
 
 		//playing the song
 		
 		player.play(drumP, p0, p1, p2,p3, bassP);
-
-
+		break;
+			}catch (Exception e) {
+				
+			}
+		}
 	}
 }
