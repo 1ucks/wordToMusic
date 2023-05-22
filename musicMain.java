@@ -1,5 +1,3 @@
-package wordToMusic;
-
 import java.io.IOException;
 import java.util.*;
 
@@ -44,8 +42,8 @@ public class musicMain {
 		ip.printImage();
 		
 		//chords
-		ArrayList<String> chords = new ArrayList<String>();
-		
+		ArrayList<String> chords = null;
+		ArrayList<String> chords2 = new ArrayList<String>();
 		//The song
 		Song song = null;
 		
@@ -64,9 +62,12 @@ public class musicMain {
 			for(int j = 0; j < possibleChords.length; j ++) {
 				
 				if(word.toUpperCase().charAt(i) == possibleChords[j].charAt(0)) {
-					chords.add(possibleChords[j]);
+					chords2.add(possibleChords[j]);
 				}
 			}
+		}
+		if(chords2.size() > 0) {
+			chords = chords2;
 		}
 		//determining which type of song it is based on the most common color
 				switch(colorNameToInt(dominantColor)) {
