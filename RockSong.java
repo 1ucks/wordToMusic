@@ -1,4 +1,4 @@
-package wordToMusic;
+
 import org.jfugue.player.Player;
 import org.jfugue.rhythm.Rhythm;
 import java.util.*;
@@ -165,6 +165,9 @@ public class RockSong extends Song {
 						continue;
 					}
 					int random2 = (int) (Math.random() * 9);
+					if(key1 < 0) {
+						key1*=-1;
+					}
 					if (random2 != 0) {
 						thePattern += pitches[key1] + "" + octave + noteNames[theRandom] + " ";
 					} else {
@@ -212,6 +215,9 @@ public class RockSong extends Song {
 					}
 					// it adds to the pattern the note name, the octave, and time length
 					int random2 = (int) (Math.random() * 9);
+					if(key1 < 0) {
+						key1*=-1;
+					}
 					if (random2 != 0) {
 						thePattern += pitches[key1] + "" + octave + noteNames[theRandom] + " ";
 					} else {
@@ -282,6 +288,9 @@ public class RockSong extends Song {
 					}
 					// it adds to the pattern the note name, the octave, and time length
 					int random2 = (int) (Math.random() * 9);
+					if(key1 < 0) {
+						key1*=-1;
+					}
 					if (random2 != 0) {
 						thePattern += pitches[key1] + "" + octave + noteNames[theRandom] + " ";
 					} else {
@@ -352,6 +361,9 @@ public class RockSong extends Song {
 					}
 					// it adds to the pattern the note name, the octave, and time length
 					int random2 = (int) (Math.random() * 9);
+					if(key1 < 0) {
+						key1*=-1;
+					}
 					if (random2 != 0) {
 						thePattern += pitches[key1] + "" + octave + noteNames[theRandom] + " ";
 					} else {
@@ -422,6 +434,9 @@ public class RockSong extends Song {
 					}
 					// it adds to the pattern the note name, the octave, and time length
 					int random2 = (int) (Math.random() * 9);
+					if(key1 < 0) {
+						key1*=-1;
+					}
 					if (random2 != 0) {
 						thePattern += pitches[key1] + "" + octave + noteNames[theRandom] + " ";
 					} else {
@@ -492,6 +507,9 @@ public class RockSong extends Song {
 					}
 					// it adds to the pattern the note name, the octave, and time length
 					int random2 = (int) (Math.random() * 9);
+					if(key1 < 0) {
+						key1*=-1;
+					}
 					if (random2 != 0) {
 						thePattern += pitches[key1] + "" + octave + noteNames[theRandom] + " ";
 					} else {
@@ -681,6 +699,9 @@ public class RockSong extends Song {
 					continue;
 				}
 				int random2 = (int)(Math.random()* 9);
+				if(key1 < 0) {
+					key1*=-1;
+				}
 				if(random2 != 0) {
 					thePattern += pitches[key1] + "" + octave+ theChord  + noteNames[theRandom] + " ";
 				}else {
@@ -713,7 +734,7 @@ public class RockSong extends Song {
 	public void playSong(ArrayList<String> keys){
 		System.out.println("Generating song, this make some time");
 		//generating
-		Pattern drumP = generateDrumline(400);
+		Pattern drumP = generateDrumline(450);
 		
 		String sound = generateMelody(keys);
 		//player.play(sound);
@@ -726,7 +747,7 @@ public class RockSong extends Song {
 		
 		
 		Pattern bassP = new Pattern(generateBassLine(keys));
-
+		System.out.println(bassP);
 		
 		Player player = new Player();
 
