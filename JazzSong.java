@@ -605,6 +605,7 @@ public class JazzSong extends Song {
 		String theChord = "";
 		int random = (int)(Math.random()*3);
 		switch(getFeel()) {
+		//dealing with the chords
 		case(0):
 			switch(random) {
 			case(0):
@@ -758,6 +759,7 @@ public class JazzSong extends Song {
 		//playing the song
 		
 		player.play(drumP, p0, p1, p2,p3, bassP);
+		break;
 			}catch(Exception e) {
 				
 			}
