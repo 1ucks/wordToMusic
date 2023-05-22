@@ -1,12 +1,12 @@
-
+package wordToMusic;
 import org.jfugue.player.Player;
 import org.jfugue.rhythm.Rhythm;
 import java.util.*;
 import org.jfugue.pattern.Pattern;
 
-public class RockSong extends Song {
+public class JazzSong extends Song {
 	// constructor
-	public RockSong(int mostCommonColour, int averageColour, ArrayList<String> theChords) {
+	public JazzSong(int mostCommonColour, int averageColour, ArrayList<String> theChords) {
 		super(mostCommonColour, averageColour, theChords);
 	}
 
