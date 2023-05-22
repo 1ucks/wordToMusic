@@ -16,7 +16,7 @@ public class TechnoSong extends Song {
 	// the bass in struments
 	private static String[] bassInstruments = new String[] { "ELECTRIC_BASS_FINGER", "GOBLINS", "VOICE_OOHS",
 			"TELEPHONE_RING", "TELEPHONE_RING", "SLAP_BASS_1", "SLAP_BASS_2", "FRETLESS_BASS", "REVERSE_CYMBAL", "GOBLINS", "HELICOPTER",
-			"BIRD_TWEET" };
+			"BIRD_TWEET", "CHOIR_AAHS" };
 	public TechnoSong(int mostCommonColour, int averageColour, ArrayList<String> theChords) {
 		super(mostCommonColour, averageColour, theChords);
 	}
