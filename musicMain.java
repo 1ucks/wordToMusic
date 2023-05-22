@@ -1,3 +1,5 @@
+package wordToMusic;
+
 import java.io.IOException;
 import java.util.*;
 
