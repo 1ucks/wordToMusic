@@ -734,12 +734,16 @@ public class RockSong extends Song {
 	public void playSong(ArrayList<String> keys){
 		System.out.println("Generating song, this make some time");
 		//generating
+		int count = 0;
+		while(count < Integer.MAX_VALUE) {
+			count +=1;
+			try {
+				System.out.println("generating");
 		Pattern drumP = generateDrumline(450);
 		
 		String sound = generateMelody(keys);
-		//player.play(sound);
-		System.out.println(sound);
-		System.out.println();
+		
+		
 		Pattern p0 = new Pattern(sound.substring(0, sound.indexOf("V1"))); 						//player.play(p0);				
 		Pattern p1 = new Pattern(sound.substring(sound.indexOf("V1"), sound.indexOf("V2")));
 		Pattern p2 = new Pattern(sound.substring(sound.indexOf("V2"), sound.indexOf("V3")));
@@ -747,14 +751,16 @@ public class RockSong extends Song {
 		
 		
 		Pattern bassP = new Pattern(generateBassLine(keys));
-		System.out.println(bassP);
+		
 		
 		Player player = new Player();
 
 		//playing the song
 		
 		player.play(drumP, p0, p1, p2,p3, bassP);
-
-
+			}catch(Exception e) {
+				
+			}
+			}
 	}
 }
