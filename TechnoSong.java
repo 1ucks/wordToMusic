@@ -1,4 +1,3 @@
-package wordToMusic;
 import org.jfugue.player.Player;
 import org.jfugue.rhythm.Rhythm;
 import java.util.*;
@@ -704,7 +703,7 @@ public class TechnoSong extends Song {
 	public void playSong(ArrayList<String> keys){
 		System.out.println("Generating song, this make some time");
 		//generating
-		Pattern drumP = generateDrumline(400);
+		Pattern drumP = generateDrumline(450);
 		
 		String sound = generateMelody(keys);
 		//player.play(sound);
@@ -717,7 +716,7 @@ public class TechnoSong extends Song {
 		
 		
 		Pattern bassP = new Pattern(generateBassLine(keys));
-
+		System.out.println(bassP);
 		
 		Player player = new Player();
 
