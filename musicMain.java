@@ -83,17 +83,17 @@ public class musicMain {
 					break;
 				
 				case 2:
-					song = new LowFi(colorNameToInt(leastColor), colorNameToInt(averageColor), chords);
-					System.out.println("lowfi");
+					song = new RockSong(colorNameToInt(leastColor), colorNameToInt(averageColor), chords);
+					System.out.println("rock");
 					break;
 				case 3:
-					System.out.println("lowfi");
-					song = new LowFi(colorNameToInt(leastColor), colorNameToInt(averageColor), chords);
+					System.out.println("techno");
+					song = new TechnoSong(colorNameToInt(leastColor), colorNameToInt(averageColor), chords);
 					break;
 				
 				case 4:
-					System.out.println("techno");
-					song = new TechnoSong(colorNameToInt(leastColor), colorNameToInt(averageColor), chords);
+					System.out.println("lowfi");
+					song = new LowFi(colorNameToInt(leastColor), colorNameToInt(averageColor), chords);
 					break;
 				case 5:
 					System.out.println("techno");
