@@ -64,7 +64,7 @@ public class TechnoSong extends Song {
 				snare += ".";
 				// randomly deciding which drums to use/not use
 				int drumRand = (int) (Math.random() * 10) + 1;
-				System.out.println(drumRand);
+				
 				// O is more likely to appear after a o
 				if (normDrum.length() > 0 && normDrum.charAt(normDrum.length() - 1) == 'o') {
 					drumRand += 5;
@@ -666,7 +666,7 @@ public class TechnoSong extends Song {
 			int octave = (int) (Math.random() * 3 + 2);
 			while (beatCount < 4) {
 				// picks a random beat that fits in the measure
-				int theRandom = (int) (Math.random() * noteLengths.length);
+				int theRandom = ((int) (Math.random() * 2))*2;
 				// if it does not fit it adds it skips and tries again
 				if (beatCount + noteLengths[theRandom] > 4) {
 					continue;
@@ -703,10 +703,17 @@ public class TechnoSong extends Song {
 	public void playSong(ArrayList<String> keys){
 		System.out.println("Generating song, this make some time");
 		//generating
-		Pattern drumP = generateDrumline(80);
+		Pattern drumP = generateDrumline(400);
 		
+		String sound = generateMelody(keys);
+		//player.play(sound);
+		System.out.println(sound);
+		System.out.println();
+		Pattern p0 = new Pattern(sound.substring(0, sound.indexOf("V1"))); 						//player.play(p0);				
+		Pattern p1 = new Pattern(sound.substring(sound.indexOf("V1"), sound.indexOf("V2")));
+		Pattern p2 = new Pattern(sound.substring(sound.indexOf("V2"), sound.indexOf("V3")));
+		Pattern p3 = new Pattern(sound.substring(sound.indexOf("V3")));
 		
-		Pattern melodyP = new Pattern(generateMelody(keys));
 		
 		Pattern bassP = new Pattern(generateBassLine(keys));
 
@@ -715,9 +722,8 @@ public class TechnoSong extends Song {
 
 		//playing the song
 		
-		player.play(drumP, melodyP, bassP);
+		player.play(drumP, p0, p1, p2,p3, bassP);
 
 
 	}
-
 }
