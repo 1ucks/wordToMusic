@@ -1,4 +1,4 @@
-package wordToMusic;
+
 import org.jfugue.player.Player;
 import org.jfugue.rhythm.Rhythm;
 import java.util.*;
@@ -20,7 +20,7 @@ public class RockSong extends Song {
 	// list of all pitches possible in assending order
 	private static String[] pitches = new String[] { "Ab", "A", "Bb", "B", "C", "C#", "D", "Eb", "E", "F", "F#", "G" };
 	// the lengths of each note
-	private static double[] noteLengths = new double[] { 4, 3, 2, 1.5, 1, 0.75, 0.5, 0.375, 0.25, 0.125 };
+	private static double[] noteLengths = new double[] { 4, 3, 2, 1.5, 1, 0.75, 0.5,  0.25 };
 	// the name of each note at the index
 	private static String[] noteNames = new String[] { "w", "h.", "h", "q.", "q", "i.", "i", "s"};
 	// list of Rhythm pieces for drumkit
@@ -72,7 +72,7 @@ public class RockSong extends Song {
 				snare+= ".";
 				//randomly deciding which drums to use/not use
 				int drumRand = (int) (Math.random()*10)+1;
-				System.out.println(drumRand);
+				
 				//O is more likely to appear after a o
 				if(normDrum.length()>0 && normDrum.charAt(normDrum.length()-1) == 'o'){
 					drumRand+=5;
@@ -345,7 +345,7 @@ public class RockSong extends Song {
 				// while a measure is not complete
 				while (beatCount < 4) {
 					// picks a random beat that fits in the measure
-					int theRandom = (int) (Math.random() * noteLengths.length);
+					int theRandom = (int) (Math.random() * noteNames.length);
 					// if it does not fit it adds it skips and tries again
 					if (beatCount + noteLengths[theRandom] > 4) {
 						continue;
@@ -485,7 +485,7 @@ public class RockSong extends Song {
 				// while a measure is not complete
 				while (beatCount < 4) {
 					// picks a random beat that fits in the measure
-					int theRandom = (int) (Math.random() * noteLengths.length);
+					int theRandom = (int) (Math.random() * noteNames.length);
 					// if it does not fit it adds it skips and tries again
 					if (beatCount + noteLengths[theRandom] > 4) {
 						continue;
