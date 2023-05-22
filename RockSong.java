@@ -24,13 +24,7 @@ public class RockSong extends Song {
 	// the name of each note at the index
 	private static String[] noteNames = new String[] { "w", "h.", "h", "q.", "q", "i.", "i", "s"};
 	// list of Rhythm pieces for drumkit
-	private static String[] rhythmParts = new String[] { "O", "S", "*", "o", "s", "^", "`", "+", "X", "x" };
-	// the drumkit for the switchup with twice the instruments
-	private static String[] rhythmParts2 = new String[] { "O", "S", "*", "X", "^", "o", "s", "`", "+", "x", "O", "S",
-			"*", "X", "^" };
-	
-
-	// the drumlines
+		// the drumlines
 	public Pattern generateDrumline(int length) {
 		//taking voice 9 
 		String theDrumline = " V9 I |";
