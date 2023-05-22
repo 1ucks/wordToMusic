@@ -155,6 +155,9 @@ public class TechnoSong extends Song {
 						continue;
 					}
 					int random2 = (int) (Math.random() * 9);
+					if(key1 < 0) {
+						key1*=-1;
+					}
 					if (random2 != 0) {
 						thePattern += pitches[key1] + "" + octave + noteNames[theRandom] + " ";
 					} else {
@@ -202,6 +205,9 @@ public class TechnoSong extends Song {
 					}
 					// it adds to the pattern the note name, the octave, and time length
 					int random2 = (int) (Math.random() * 9);
+					if(key1 < 0) {
+						key1*=-1;
+					}
 					if (random2 != 0) {
 						thePattern += pitches[key1] + "" + octave + noteNames[theRandom] + " ";
 					} else {
@@ -272,6 +278,9 @@ public class TechnoSong extends Song {
 					}
 					// it adds to the pattern the note name, the octave, and time length
 					int random2 = (int) (Math.random() * 9);
+					if(key1 < 0) {
+						key1*=-1;
+					}
 					if (random2 != 0) {
 						thePattern += pitches[key1] + "" + octave + noteNames[theRandom] + " ";
 					} else {
@@ -342,6 +351,9 @@ public class TechnoSong extends Song {
 					}
 					// it adds to the pattern the note name, the octave, and time length
 					int random2 = (int) (Math.random() * 9);
+					if(key1 < 0) {
+						key1*=-1;
+					}
 					if (random2 != 0) {
 						thePattern += pitches[key1] + "" + octave + noteNames[theRandom] + " ";
 					} else {
@@ -412,6 +424,9 @@ public class TechnoSong extends Song {
 					}
 					// it adds to the pattern the note name, the octave, and time length
 					int random2 = (int) (Math.random() * 9);
+					if(key1 < 0) {
+						key1*=-1;
+					}
 					if (random2 != 0) {
 						thePattern += pitches[key1] + "" + octave + noteNames[theRandom] + " ";
 					} else {
@@ -482,6 +497,9 @@ public class TechnoSong extends Song {
 					}
 					// it adds to the pattern the note name, the octave, and time length
 					int random2 = (int) (Math.random() * 9);
+					if(key1 < 0) {
+						key1*=-1;
+					}
 					if (random2 != 0) {
 						thePattern += pitches[key1] + "" + octave + noteNames[theRandom] + " ";
 					} else {
@@ -672,6 +690,9 @@ public class TechnoSong extends Song {
 					continue;
 				}
 				int random2 = (int) (Math.random() * 9);
+				if(key1 < 0) {
+					key1*=-1;
+				}
 				if (random2 != 0) {
 					thePattern += pitches[key1] + "" + octave + theChord + noteNames[theRandom] + " ";
 				} else {
