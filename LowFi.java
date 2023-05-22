@@ -550,7 +550,7 @@ public class LowFi extends Song{
 
 	
 	//the bassline
-	public String generateBass(ArrayList<String> keys) {
+	public String generateBassLine(ArrayList<String> keys) {
 		int key1;
 		int key2;
 		if(keys == null) {

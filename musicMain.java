@@ -58,25 +58,31 @@ public class musicMain {
 		
 		case 0:
 			song = new RockSong(colorNameToInt(leastColor), colorNameToInt(averageColor), chords);
+			System.out.println("rock");
 			break;
 		
 		case 1:
 			song = new RockSong(colorNameToInt(leastColor), colorNameToInt(averageColor), chords);
+			System.out.println("rock");
 			break;
 		
 		case 2:
 			song = new RockSong(colorNameToInt(leastColor), colorNameToInt(averageColor), chords);
+			System.out.println("rock");
 			break;
 		case 3:
 			song = new TechnoSong(colorNameToInt(leastColor), colorNameToInt(averageColor), chords);
+			System.out.println("techno");
 			break;
 		
 		case 4:
 			song = new LowFi(colorNameToInt(leastColor), colorNameToInt(averageColor), chords);
+			System.out.println("lowfi");
 			break;
 		
 		case 5:
 			song = new TechnoSong(colorNameToInt(leastColor), colorNameToInt(averageColor), chords);
+			System.out.println("techno");
 			break;
 		}
 		int keyA = 0;

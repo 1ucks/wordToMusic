@@ -1,3 +1,4 @@
+package wordToMusic;
 import org.jfugue.player.Player;
 import org.jfugue.rhythm.Rhythm;
 import java.util.ArrayList;
