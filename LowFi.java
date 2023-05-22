@@ -187,7 +187,7 @@ public class LowFi extends Song{
 				thePattern += " ";
 			}
 			for (int count = 0; count < 4; count += 1) {
-				theMelody += "V" + count + " I[" + melodicInstruments[(int) (Math.random() * 13)] + "] " + thePattern
+				theMelody += "V" + count + " I[" + melodicInstruments[(int) (Math.random() * melodicInstruments.length)] + "] " + thePattern
 						+ "\n";
 			}
 			break;
@@ -257,7 +257,7 @@ public class LowFi extends Song{
 			}
 			// it does it 4 times with different instruments
 			for (int count = 0; count < 4; count += 1) {
-				theMelody += "V" + count + " I[" + melodicInstruments[(int) (Math.random() * 13)] + "] " + thePattern
+				theMelody += "V" + count + " I[" + melodicInstruments[(int) (Math.random() * melodicInstruments.length)] + "] " + thePattern
 						+ "\n";
 			}
 			break;
@@ -327,7 +327,7 @@ public class LowFi extends Song{
 			}
 			// it does it 4 times with different instruments
 			for (int count = 0; count < 4; count += 1) {
-				theMelody += "V" + count + " I[" + melodicInstruments[(int) (Math.random() * 13)] + "] " + thePattern
+				theMelody += "V" + count + " I[" + melodicInstruments[(int) (Math.random() * melodicInstruments.length)] + "] " + thePattern
 						+ "\n";
 			}
 			break;
@@ -397,7 +397,7 @@ public class LowFi extends Song{
 			}
 			// it does it 4 times with different instruments
 			for (int count = 0; count < 4; count += 1) {
-				theMelody += "V" + count + " I[" + melodicInstruments[(int) (Math.random() * 13)] + "] " + thePattern
+				theMelody += "V" + count + " I[" + melodicInstruments[(int) (Math.random() * melodicInstruments.length)] + "] " + thePattern
 						+ "\n";
 			}
 			break;
@@ -467,7 +467,7 @@ public class LowFi extends Song{
 			}
 			// it does it 4 times with different instruments
 			for (int count = 0; count < 4; count += 1) {
-				theMelody += "V" + count + " I[" + melodicInstruments[(int) (Math.random() * 13)] + "] " + thePattern
+				theMelody += "V" + count + " I[" + melodicInstruments[(int) (Math.random() * melodicInstruments.length)] + "] " + thePattern
 						+ "\n";
 			}
 			break;
@@ -537,7 +537,7 @@ public class LowFi extends Song{
 			}
 			// it does it 4 times with different instruments
 			for (int count = 0; count < 4; count += 1) {
-				theMelody += "V" + count + " I[" + melodicInstruments[(int) (Math.random() * 13)] + "] " + thePattern
+				theMelody += "V" + count + " I[" + melodicInstruments[(int) (Math.random() * melodicInstruments.length)] + "] " + thePattern
 						+ "\n";
 			}
 			break;
@@ -705,7 +705,7 @@ public class LowFi extends Song{
 		}
 		String theMelody = "";
 	
-		theMelody += "V" + (int)(4) + " I[" + bassInstruments[(int)(Math.random()*13)] + "] " +thePattern + "\n"; 
+		theMelody += "V" + (int)(4) + " I[" + bassInstruments[(int)(Math.random()*bassInstruments.length)] + "] " +thePattern + "\n"; 
 	
 	return theMelody;
 	}
