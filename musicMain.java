@@ -1,4 +1,3 @@
-package wordToMusic;
 import java.io.IOException;
 import java.util.*;
 
@@ -84,17 +83,17 @@ public class musicMain {
 					break;
 				
 				case 2:
-					song = new Rock(colorNameToInt(leastColor), colorNameToInt(averageColor), chords);
-					System.out.println("rock");
+					song = new LowFi(colorNameToInt(leastColor), colorNameToInt(averageColor), chords);
+					System.out.println("lowfi");
 					break;
 				case 3:
-					System.out.println("techno");
-					song = new TechnoSong(colorNameToInt(leastColor), colorNameToInt(averageColor), chords);
+					System.out.println("lowfi");
+					song = new LowFi(colorNameToInt(leastColor), colorNameToInt(averageColor), chords);
 					break;
 				
 				case 4:
-					System.out.println("lowfi");
-					song = new LowFi(colorNameToInt(leastColor), colorNameToInt(averageColor), chords);
+					System.out.println("techno");
+					song = new TechnoSong(colorNameToInt(leastColor), colorNameToInt(averageColor), chords);
 					break;
 				case 5:
 					System.out.println("techno");
