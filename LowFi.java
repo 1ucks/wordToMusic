@@ -727,7 +727,7 @@ public class LowFi extends Song{
 		
 		Pattern drums = generateDrumline(450);
 
-		String bass = generateBass(keys);
+		String bass = generateBassLine(keys);
 
 		Player player = new Player();
 
