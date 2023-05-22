@@ -19,7 +19,15 @@ public class musicMain {
 		String word = in.nextLine();
 		System.out.println("\n");
 		//class to deal with images
-		ImageProcessor ip = new ImageProcessor(word);
+		int count = 0;
+		String dominantColor = "";
+		String averageColor = "";
+		String leastColor = "";
+		ImageProcessor ip = null;
+		while(count < 1001) {
+			count +=1;
+			try {
+		 ip = new ImageProcessor(word);
 		
 		//searches for the word using the api
 		ip.search();
@@ -29,11 +37,15 @@ public class musicMain {
 		//the main variables to determine the variations in the song
 		
 		//IMPORTANT GETAVERAGECOLOR METHOD MUST BE RAN FIRST BECAUSE IT HAS THE ERROR DETECTION
-		String averageColor = ip.getAverageColor();
+		 averageColor = ip.getAverageColor();
 		
-		String dominantColor = ip.getDominantColor();
-		String leastColor = ip.getLeastColor();
-		
+		 dominantColor = ip.getDominantColor();
+		 leastColor = ip.getLeastColor();
+		 break;
+			}catch(Exception e) {
+				
+			}
+		}
 		//prints
 		System.out.println("Printing the image :");
 		System.out.println("Average Color: " + averageColor);
