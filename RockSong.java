@@ -681,7 +681,7 @@ public class RockSong extends Song {
 			int octave = (int)(Math.random()*3 +2); 										
 			while(beatCount<4) { 															
 				// picks a random beat that fits in the measure
-				int theRandom = (int) (Math.random() * noteLengths.length);
+				int theRandom = ((int) (Math.random() * 2))*2;
 				// if it does not fit it adds it skips and tries again
 				if (beatCount + noteLengths[theRandom] > 4) {
 					continue;
