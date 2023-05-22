@@ -1,3 +1,5 @@
+package wordToMusic;
+
 import java.io.IOException;
 import java.util.*;
 
@@ -83,23 +85,23 @@ public class musicMain {
 		}
 		//determining which type of song it is based on the most common color
 				switch(colorNameToInt(dominantColor)) {
-				//red, orange, and yellow are rock
+				//red, orange, and yellow are jazz
 				//blue is the blues
 				//green and purple are techno
 				
 				case 0:
-					song = new RockSong(colorNameToInt(leastColor), colorNameToInt(averageColor), chords);
-					System.out.println("rock");
+					song = new JazzSong(colorNameToInt(leastColor), colorNameToInt(averageColor), chords);
+					System.out.println("jazz");
 					break;
 				
 				case 1:
-					song = new RockSong(colorNameToInt(leastColor), colorNameToInt(averageColor), chords);
-					System.out.println("rock");
+					song = new JazzSong(colorNameToInt(leastColor), colorNameToInt(averageColor), chords);
+					System.out.println("jazz");
 					break;
 				
 				case 2:
-					song = new RockSong(colorNameToInt(leastColor), colorNameToInt(averageColor), chords);
-					System.out.println("rock");
+					song = new JazzSong(colorNameToInt(leastColor), colorNameToInt(averageColor), chords);
+					System.out.println("jazz");
 					break;
 				case 3:
 					System.out.println("techno");
