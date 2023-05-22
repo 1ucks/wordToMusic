@@ -1,5 +1,4 @@
 package wordToMusic;
-
 import java.io.IOException;
 import java.util.*;
 
@@ -46,45 +45,10 @@ public class musicMain {
 		//chords
 		ArrayList<String> chords = new ArrayList<String>();
 		
-		
 		//The song
 		Song song = null;
 		
-		//determining which type of song it is based on the most common color
-		switch(colorNameToInt(dominantColor)) {
-		//red, orange, and yellow are rock
-		//blue is the blues
-		//green and purple are techno
 		
-		case 0:
-			song = new RockSong(colorNameToInt(leastColor), colorNameToInt(averageColor), chords);
-			System.out.println("rock");
-			break;
-		
-		case 1:
-			song = new RockSong(colorNameToInt(leastColor), colorNameToInt(averageColor), chords);
-			System.out.println("rock");
-			break;
-		
-		case 2:
-			song = new RockSong(colorNameToInt(leastColor), colorNameToInt(averageColor), chords);
-			System.out.println("rock");
-			break;
-		case 3:
-			song = new TechnoSong(colorNameToInt(leastColor), colorNameToInt(averageColor), chords);
-			System.out.println("techno");
-			break;
-		
-		case 4:
-			song = new LowFi(colorNameToInt(leastColor), colorNameToInt(averageColor), chords);
-			System.out.println("lowfi");
-			break;
-		
-		case 5:
-			song = new TechnoSong(colorNameToInt(leastColor), colorNameToInt(averageColor), chords);
-			System.out.println("techno");
-			break;
-		}
 		int keyA = 0;
 		int keyB = 0;
 		int keyC = 0;
@@ -103,6 +67,40 @@ public class musicMain {
 				}
 			}
 		}
+		//determining which type of song it is based on the most common color
+				switch(colorNameToInt(dominantColor)) {
+				//red, orange, and yellow are rock
+				//blue is the blues
+				//green and purple are techno
+				
+				case 0:
+					song = new RockSong(colorNameToInt(leastColor), colorNameToInt(averageColor), chords);
+					System.out.println("rock");
+					break;
+				
+				case 1:
+					song = new RockSong(colorNameToInt(leastColor), colorNameToInt(averageColor), chords);
+					System.out.println("rock");
+					break;
+				
+				case 2:
+					song = new Rock(colorNameToInt(leastColor), colorNameToInt(averageColor), chords);
+					System.out.println("rock");
+					break;
+				case 3:
+					System.out.println("techno");
+					song = new TechnoSong(colorNameToInt(leastColor), colorNameToInt(averageColor), chords);
+					break;
+				
+				case 4:
+					System.out.println("lowfi");
+					song = new LowFi(colorNameToInt(leastColor), colorNameToInt(averageColor), chords);
+					break;
+				case 5:
+					System.out.println("techno");
+					song = new TechnoSong(colorNameToInt(leastColor), colorNameToInt(averageColor), chords);
+					break;
+				}
 		//plays the song
 		System.out.print("Type play to play the song: ");
 		in.next();
