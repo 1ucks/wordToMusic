@@ -290,7 +290,7 @@ public class LowFi extends Song{
 					int random2 = (int) (Math.random() * 9);
 					if(key1 < 0) {
 						key1*=-1;
-					} (random2 != 0) {
+					} else if (random2 != 0) {
 						thePattern += pitches[key1] + "" + octave + noteNames[theRandom] + " ";
 					} else {
 						thePattern += "R" + octave + noteNames[theRandom] + " ";
